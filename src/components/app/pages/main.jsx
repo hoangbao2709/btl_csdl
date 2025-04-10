@@ -69,7 +69,7 @@ const Main = () => {
       }}
     >
       <Header childWidth={childWidth}/>
-      <div className="flex mt-[120px]">
+      <div className="flex pt-[140px]">
         <Images />
       </div>
       <div className={`main flex w-[100%] justify-center mt-[50px] `}>

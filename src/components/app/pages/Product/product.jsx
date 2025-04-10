@@ -94,7 +94,7 @@ export default function Product() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/getFavorite.php?id=${encodeURIComponent(element.id)}`);
+            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getFavorite.php?id=${encodeURIComponent(element.id)}`);
             const data = await response.json();
             setFavourite(data.length > 0);
           } catch (error) {
@@ -166,8 +166,8 @@ export default function Product() {
 
     useEffect(() => {
         favourite ?
-        fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/favorite.php?id=${encodeURIComponent(element.id)}`)
-        : fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(element.id)}`)
+        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/favorite.php?id=${encodeURIComponent(element.id)}`)
+        : fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(element.id)}`)
     }, [favourite]); 
 
     function handleFavorite(){
@@ -175,7 +175,7 @@ export default function Product() {
     }
 
     function addToStore(){
-        fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/store.php?&id=${encodeURIComponent(element.id)}&sl=${soLuong}`)
+        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/store.php?&id=${encodeURIComponent(element.id)}&sl=${soLuong}`)
     }
 
     function formatPrice(price) {

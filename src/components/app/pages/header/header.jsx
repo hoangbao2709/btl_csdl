@@ -1,4 +1,4 @@
-import logoDark from "./../images/logo.webp";
+import logoDark from "./../images/cellphones-logo.webp";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -8,8 +8,12 @@ import Search from './search'
 import React, { useRef, useEffect, useState } from 'react';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import image1 from './../images/Top banner_Chinh hang.svg';
+import image2 from './../images/Top banner_Giao hang.svg';
+import image3 from './../images/Top banner_Smember.svg';
+import image4 from './../images/Top banner_Thu cu.svg';
 import './css/style.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,13 +21,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 let category = [
-    "Tất cả sản phẩm",
-    "Lịch sử truyền thống",
-    "Văn học Việt Nam",
-    "Văn học nước ngoài",
-    "Kiến thức, khoa học",
-    "Truyện tranh",
-    "Wings Books"
+    "Điện thoại, Tablet",
+    "Laptop",
+    "Âm thanh, Mic thu âm",
+    "Đồng hồ, Camera",
+    "Đồ gia dụng",
+    "Phụ kiện",
+    "PC, màn hình, Máy in",
+    "Tivi",
 ];
 
 let linkCategory = [
@@ -34,24 +39,16 @@ let linkCategory = [
     "/main/Kien_thuc_khoa_hoc",
     "/main/Truyen_tranh",
     "/main/Wings_book",
+    "/main/Wings_book",
 ];
 
 const listCategory = category.map((element, index) => {
-    if (index !== category.length - 1) {
-        return (
-            <li key={index} className="border-b  border-black pt-[5px] bg-white hover:text-[red]">
-                <FontAwesomeIcon icon={faBook} />
-                <a className="pl-[5px] ml-[10px]" href={linkCategory[index]}>{element}</a>
-            </li>
-        );
-    } else {
-        return (
-            <li key={index} className="rounded-b-lg border-b border-black pt-[5px] bg-white hover:text-[red]">
-                <FontAwesomeIcon icon={faBook} />
-                <a className="pl-[5px] ml-[10px]" href={linkCategory[index]}>{element}</a>
-            </li>
-        );
-    }
+    return (
+        <li key={index} className="border-b  border-black pt-[5px] bg-white hover:text-[red]">
+            <FontAwesomeIcon icon={faBook} />
+            <a className="pl-[5px] ml-[10px]" href={linkCategory[index]}>{element}</a>
+        </li>
+    );
 });
 
 
@@ -115,7 +112,7 @@ export default function Header(item) {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/getAllFavorite.php`);
+            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getAllFavorite.php`);
             const data = await response.json();
             setFavourite(data);
           } catch (error) {
@@ -128,7 +125,7 @@ export default function Header(item) {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/getAllStore.php`);
+            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getAllStore.php`);
             const data = await response.json();
             setStore(data);
           } catch (error) {
@@ -158,7 +155,7 @@ export default function Header(item) {
     useEffect(() => {
         const indexFavorite = clickFavorite.findIndex(value => value === true);
         if (indexFavorite !== -1) {
-            fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(indexFavorite)}`)
+            fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(indexFavorite)}`)
                 .then(response => response.json()) 
                 .catch(error => console.error('Error fetching data:', error));
                 setClickFavorite(prevCheckedItems => {
@@ -169,7 +166,7 @@ export default function Header(item) {
         }
         const indexStore = clickStore.findIndex(value => value === true);
         if (indexStore !== -1) {
-            fetch(`https://localhost/BTL_web_1/src/app/BackEnd/php/uploads/deleteStore.php?id=${encodeURIComponent(indexStore)}`)
+            fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteStore.php?id=${encodeURIComponent(indexStore)}`)
                 .then(response => response.json()) 
                 .catch(error => console.error('Error fetching data:', error));
                 setClickStore(prevCheckedItems => {
@@ -292,11 +289,36 @@ export default function Header(item) {
     function ClickStore(){
         setListStore(!listStore);
     }
+
+    let image_banner = [
+        image1,
+        image2,
+        image3,
+        image4,
+    ];
     
     return (
         <div className="z-100">
             <header id="yourElementId" className={`fixed z-50 w-full top-0 left-0 transition-transform duration-700 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-                <div className="flex z-50 pl-[100px] bg-[white] items-center">
+                <div className="flex z-50 h-[40px] pl-[100px] bg-[#E9EFFF] items-center">
+                <Swiper
+
+                    autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    }}
+                    slidesPerView={3}
+                    modules={[Autoplay, Pagination, Navigation]}
+                    className="w-[1200px] justify-center items-center rounded-4xl"
+                >
+                    {image_banner.map((image, index) => (
+                        <SwiperSlide key={index}>
+                            <img className="size-90 rounded-4xl" src={image} alt={`Slide ${index + 1}`} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                </div>
+                <div className="flex z-50 pl-[100px] bg-[#D70018] items-center">
                     <div className="logo flex items-center">
                         <img src={logoDark} className="h-[50px] my-[10px] mr-[50px]" alt="Logo" />
                     </div>
@@ -305,8 +327,16 @@ export default function Header(item) {
                             <Search childWidth={item.childWidth}/>
                         </form>
                     </ul>
-
-                    <ul  className="absolute flex p-[30px] pt-[10px] pb-[10px] text-[#009981] text-[20px] right-[3%]">
+                    <div className="flex items-center h-[80px] group relative ">
+                        <div className="p-[10px] bg-[#DF3346]  rounded-lg">
+                            <FontAwesomeIcon className="text-[white] font-bold" icon={faList} />
+                            <label className="text-white font-normal px-[10px]" style={{ fontStyle: 'normal' }}>Danh mục</label>
+                        </div>
+                        <ul className="absolute rounded-lg py-[10px] top-[70px] bg-white  w-[300px] text-[23px] px-[15px] items-center hidden group-hover:block">
+                            {listCategory}
+                        </ul>
+                    </div>
+                    <ul className="absolute flex p-[30px] pt-[10px] pb-[10px] text-white text-[20px] right-[3%]">
                         <li className="text-[30px] px-[20px] hover:text-[red] cursor-pointer mx-[5px] relative rounded-lg transition delay-150 duration-300 ease-in-out hover:bg-[#EEFFF7]">
                             <FontAwesomeIcon onClick={ClickFavorite} icon={faHeart} />
                             <p className="absolute top-[-10px] h-[25px] w-[25px] flex items-center justify-center rounded-[50%] bg-[red] right-0 text-white text-[15px]">{favourite.length || 0}</p>
@@ -321,27 +351,6 @@ export default function Header(item) {
                             <FontAwesomeIcon icon={faUser} />
                         </li>
                     </ul>
-                </div>
-                
-                <div className={`h-[50px] w-full bg-[black] flex items-center justify-center transition-transform duration-700 ${isVisible ? 'translate-y-0' : 'translate-y-[50px]'}`}>
-                    <div className="flex items-center text-[20px] h-full relative w-[1400px] justify-center">
-                            <div className="flex items-center w-[300px] absolute left-0 h-full  bg-[#15A78A] group">
-                                <i className="px-[15px] rounded-lg">
-                                    <FontAwesomeIcon className="text-[white] font-bold" icon={faList} />
-                                    <label className="text-white font-normal px-[10px]" style={{ fontStyle: 'normal' }}>Danh mục sản phẩm</label>
-                                </i>
-                                <ul className="absolute bg-white left-0 w-[300px] text-[23px] top-[50px] px-[15px] items-center hidden group-hover:block">
-                                    {listCategory}
-                                </ul>
-                            </div>
-                            <ul className="text-white flex text-[20px]">
-                                <li className="px-[10px] hover:text-[#15A78A] cursor-pointer">HOME <FontAwesomeIcon icon={faChevronDown} /></li>
-                                <li className="px-[10px] hover:text-[#15A78A] cursor-pointer">SHOP <FontAwesomeIcon icon={faChevronDown} /></li>
-                                <li className="px-[10px] hover:text-[#15A78A] cursor-pointer">PRODUCT <FontAwesomeIcon icon={faChevronDown} /></li>
-                                <li className="px-[10px] hover:text-[#15A78A] cursor-pointer">BLOG <FontAwesomeIcon icon={faChevronDown} /></li>
-                            </ul>
-                            <p className="absolute right-0 text-white font-bold pl-[30px] border-l-2 border-white">Clearance Up to 30% Off</p>
-                        </div>
                 </div>
             </header>
         </div>

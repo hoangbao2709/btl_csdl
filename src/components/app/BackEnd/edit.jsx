@@ -63,7 +63,7 @@ export default function Edit() {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        fetch(`https://localhost/book_store_web/src/components/app/BackEnd/php/uploads/Data.php?&url=${encodeURIComponent("tat_ca_san_pham")}&variable=${encodeURIComponent(value)}`)
+        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/Data.php?&url=${encodeURIComponent("tat_ca_san_pham")}&variable=${encodeURIComponent(value)}`)
             .then((response) => response.json())
             .then((data) => {
                 setData(data);

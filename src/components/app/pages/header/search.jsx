@@ -161,8 +161,8 @@ export default function Search(item) {
     };
 
     return (
-        <div className={`${item.childWidth >= 1300 ? "w-[800px]" : "w-[600px] ml-[100px]"} z-50`}>
-            <div className='flex items-center z-50 bg-[#F8F8F8] w-[100%] relative'>
+        <div className={`${item.childWidth >= 1300 ? "w-[800px] rounded-r-lg" : "w-[600px] ml-[100px]"} z-50`}>
+            <div className='flex items-center z-50 bg-[#F8F8F8] rounded-r-lg w-[100%] relative'>
                 <input
                     onKeyUp={test}
                     type="text"
