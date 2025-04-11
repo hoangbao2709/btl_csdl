@@ -411,8 +411,33 @@ export const Test = (item) => {
   const hasFavourites = favourite && favourite.length > 0;
   const displayItems = total ? images : test;
 
+  let chose = (
+    <div>
+      <div className="flex">
+        <div className="p-[10px] bg-[#F3F4F6] rounded-lg">Bộ lọc</div>
+        <div>Sẵn hàng</div>
+        <div>Giá</div>
+        <div>Nhu cầu sử dụng</div>
+        <div>Chip xử lý</div>
+        <div>Loại điện thoại</div>
+        <div>Dung lượng Ram</div>
+        <div>Bộ nhớ trong</div>
+      </div>
+      <div className="flex">
+        <div>Tính năng đặc biệt</div>
+        <div>Tính năng Cammera</div>
+        <div>Tần số quét</div>
+        <div>Kích thước màn hình</div>
+        <div>Kiểu màn hình</div>
+        <div>Công nghệ NFC</div>
+      </div>
+    </div>
+  )
+
   return (
     <div>
+      <p>Chọn theo tiêu chí</p>
+      {chose}
       <div>
         <div className="2xl:w-[full] xl:w-[full] flex px-6 lg:w-[full] items-center md:w-[full]  sm:w-[full] max-sm:w-[400px] relative mb-[50px] text-[30px]">
           {linkCategory[location]}
@@ -428,15 +453,6 @@ export const Test = (item) => {
         </div>
         <div className="flex">
           <header className={` min-w-[250px] `}>
-            {/* // ${
-                //     lastScrollY.current <= 500 ? 'opacity-0 transform translate-y-10' :
-                //     lastScrollY.current <= 600 ? 'top-[35%] opacity-100 transform translate-y-0' :
-                //     lastScrollY.current <= 700 ? 'top-[25%] opacity-100 transform translate-y-0' :
-                //     lastScrollY.current <= 800 ? 'top-[20%] opacity-100 transform translate-y-0' :
-                //     lastScrollY.current <= 900 ? 'top-[10%] opacity-100 transform translate-y-0' :
-                //     'top-[10%] opacity-100 transform translate-y-0'
-                // }`}>      */}
-
             <div className="font-medium bg-white mb-[40px]">
               <div>
                 <p className="flex pt-[10px] pl-[10px] bg-[red] pb-[10px] relative text-[20px] items-center text-[white]">

@@ -19,6 +19,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 let category = [
     "Điện thoại, Tablet",
@@ -300,7 +301,7 @@ export default function Header(item) {
     return (
         <div className="z-100">
             <header id="yourElementId" className={`fixed z-50 w-full top-0 left-0 transition-transform duration-700 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-                <div className="flex z-50 h-[40px] pl-[100px] bg-[#E9EFFF] items-center">
+                <div className="flex z-50 h-[40px] overflow-hidden pl-[100px] bg-[#E9EFFF] items-center">
                 <Swiper
 
                     autoplay={{
@@ -322,19 +323,26 @@ export default function Header(item) {
                     <div className="logo flex items-center">
                         <img src={logoDark} className="h-[50px] my-[10px] mr-[50px]" alt="Logo" />
                     </div>
-                    <ul className={`absolute z-100 block w-[45%] right-[500px]`}>
-                        <form className="mr-10 w-full">
-                            <Search childWidth={item.childWidth}/>
-                        </form>
-                    </ul>
-                    <div className="flex items-center h-[80px] group relative ">
-                        <div className="p-[10px] bg-[#DF3346]  rounded-lg">
+                    <div className="flex items-center h-[80px] group cursor-pointer relative ">
+                        <div className="p-[10px] bg-[#DF3346] group rounded-lg">
                             <FontAwesomeIcon className="text-[white] font-bold" icon={faList} />
                             <label className="text-white font-normal px-[10px]" style={{ fontStyle: 'normal' }}>Danh mục</label>
                         </div>
-                        <ul className="absolute rounded-lg py-[10px] top-[70px] bg-white  w-[300px] text-[23px] px-[15px] items-center hidden group-hover:block">
+                        <ul className="absolute rounded-lg py-[10px] top-[80px] bg-white  w-[300px] text-[23px] px-[15px] items-center hidden group-hover:block">
                             {listCategory}
                         </ul>
+                    </div>
+                    <ul className={`z-100 block `}>
+                        <form className="mr-10 w-full flex justify-center items-center">
+                            <Search childWidth={item.childWidth}/>
+                        </form>
+                    </ul>
+                    <div className="text-[14px] hover:bg-[#DF3346] cursor-pointer flex text-[white] justify-center items-center h-[50px] p-[10px] rounded-lg">
+                        <FontAwesomeIcon className="text-[20px] mr-[10px]" icon={faPhone} />
+                        <div>
+                            <p>Gọi mua hàng</p>
+                            <p>1800.2097</p>
+                        </div>
                     </div>
                     <ul className="absolute flex p-[30px] pt-[10px] pb-[10px] text-white text-[20px] right-[3%]">
                         <li className="text-[30px] px-[20px] hover:text-[red] cursor-pointer mx-[5px] relative rounded-lg transition delay-150 duration-300 ease-in-out hover:bg-[#EEFFF7]">
