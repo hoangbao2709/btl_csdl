@@ -1,7 +1,7 @@
 <?php
     class DbConnect {
         private $server = 'localhost';
-        private $dbname = 'tiem_sach';
+        private $dbname = 'cellphones';
         private $user = 'root';
         private $pass = '';
  

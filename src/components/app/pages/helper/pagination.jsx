@@ -44,14 +44,16 @@ export const Test = (item) => {
   const lastScrollY = useRef(0);
 
   let linkCategory = {
-    "/main": "Tất cả sản phẩm",
-    "/main/Tat_ca_san_pham": "Tất cả sản phẩm",
-    "/main/Lich_su_truyen_thong": "Lịch sử truyền thống",
-    "/main/Van_hoc_Viet_Nam": "Văn học Việt Nam",
-    "/main/Van_hoc_nuoc_ngoai": "Văn học nước ngoài",
-    "/main/Kien_thuc_khoa_hoc": "Kiến thức khoa học",
-    "/main/Truyen_tranh": "Truyện tranh",
-    "/main/Wings_book": "Wings book",
+    "/main": "Trang chủ",
+    "/main/Trang_Chu": "Trang chủ",
+    "/main/Dien_thoai_Taplet": "Điện thoại, Tablet",
+    "/main/Laptop": "Laptop",
+    "/main/Am_thanh": "Âm thanh",
+    "/main/Dong_ho_Camera": "Đồng hồ, Camera",
+    "/main/Do_gia_dung": "Đồ gia dụng",
+    "/main/Phu_kien": "Phụ kiện",
+    "/main/PC_man_hinh_May_in": "PC, màn hình, Máy in",
+    "/main/Tivi": "Tivi",
     "/main/Favorite": "Wishlist",
   };
 
@@ -411,33 +413,8 @@ export const Test = (item) => {
   const hasFavourites = favourite && favourite.length > 0;
   const displayItems = total ? images : test;
 
-  let chose = (
-    <div>
-      <div className="flex">
-        <div className="p-[10px] bg-[#F3F4F6] rounded-lg">Bộ lọc</div>
-        <div>Sẵn hàng</div>
-        <div>Giá</div>
-        <div>Nhu cầu sử dụng</div>
-        <div>Chip xử lý</div>
-        <div>Loại điện thoại</div>
-        <div>Dung lượng Ram</div>
-        <div>Bộ nhớ trong</div>
-      </div>
-      <div className="flex">
-        <div>Tính năng đặc biệt</div>
-        <div>Tính năng Cammera</div>
-        <div>Tần số quét</div>
-        <div>Kích thước màn hình</div>
-        <div>Kiểu màn hình</div>
-        <div>Công nghệ NFC</div>
-      </div>
-    </div>
-  )
-
   return (
     <div>
-      <p>Chọn theo tiêu chí</p>
-      {chose}
       <div>
         <div className="2xl:w-[full] xl:w-[full] flex px-6 lg:w-[full] items-center md:w-[full]  sm:w-[full] max-sm:w-[400px] relative mb-[50px] text-[30px]">
           {linkCategory[location]}

@@ -161,7 +161,7 @@ export default function Search(item) {
     };
 
     return (
-        <div className="xl:w-[350px]">
+        <div className={`${item.childWidth >= 1300 ? "w-[800px] rounded-r-lg" : "w-[600px] ml-[100px]"} z-50`}>
             <div className='flex items-center z-50 bg-[#F8F8F8] rounded-r-lg w-[100%] relative'>
                 <input
                     onKeyUp={test}
@@ -171,8 +171,18 @@ export default function Search(item) {
                     placeholder="Tìm kiếm sản phẩm"
                     aria-label="Tìm kiếm sản phẩm"
                 />
-
-                <button className='flex justify-center cursor-pointer w-[50px] p-4 rounded-r-lg border-l-2 border-collapse bg-[#17AF91] hover:bg-[#15A78A]'>
+                <ul ref={resultsRef1} className="items-center text-[15px] bold-900 cursor-pointer w-[300px]">
+                    <li className="px-[15px] py-[10px] flex items-center border-l-2 border-[#8A8C91] relative" onClick={handleClick}>
+                        {currentCategory}
+                        <FontAwesomeIcon className={`absolute right-[10px] ${item.childWidth >= 1300 ? "" : "hidden"}`} icon={faAnglesDown} />
+                    </li>
+                    {open && (
+                        <ul className="bold w-[200px] rounded-lg text-[15px] items-center absolute top-[50px] mt-[10px]">
+                            {listCategory}
+                        </ul>
+                    )}
+                </ul>
+                <button className='flex justify-center cursor-pointer w-[10%] p-4 rounded-r-lg border-l-2 border-collapse bg-[#17AF91] hover:bg-[#15A78A]'>
                     <FontAwesomeIcon className="text-[20px]" icon={faMagnifyingGlass} />
                 </button>
             </div>

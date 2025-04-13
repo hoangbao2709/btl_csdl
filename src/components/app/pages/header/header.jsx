@@ -19,7 +19,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import Modal from "./../helper/modal";
+import chibi from "./../images/chibi2.webp";
 
 let category = [
     "Điện thoại, Tablet",
@@ -33,14 +34,14 @@ let category = [
 ];
 
 let linkCategory = [
-    "/main/Tat_ca_san_pham",
-    "/main/Lich_su_truyen_thong",
-    "/main/Van_hoc_Viet_Nam",
-    "/main/Van_hoc_nuoc_ngoai",
-    "/main/Kien_thuc_khoa_hoc",
-    "/main/Truyen_tranh",
-    "/main/Wings_book",
-    "/main/Wings_book",
+    "/main/Dien_thoai_Taplet",
+    "/main/Laptop",
+    "/main/Am_thanh",
+    "/main/Dong_ho_Camera",
+    "/main/Do_gia_dung",
+    "/main/Phu_kien",
+    "/main/PC_man_hinh_May_in",
+    "/main/Tivi",
 ];
 
 const listCategory = category.map((element, index) => {
@@ -63,6 +64,7 @@ export default function Header(item) {
     const resultsRef1 = useRef();
     const resultsRef2 = useRef();
     const [images, setImages] = useState([]);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
       async function loadImages() {
@@ -300,10 +302,22 @@ export default function Header(item) {
     
     return (
         <div className="z-100">
+            <Modal open={open} onClose={() => setOpen(false)}>
+            <div className="h-[300px] w-[330px] bg-white shadow-lg rounded-2xl">
+                <p className="w-full flex items-center justify-center text-[red] font-bold text-[40px]">Smember</p>
+                <div className="w-full flex items-center justify-center">
+                    <img src={chibi} alt="" />
+                </div>
+                <p className="text-black text-center ">Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn.</p>
+                <div className="flex h-[102px] w-full items-center justify-center">
+                    <a href="/sign_up" className="cursor-pointer transition-transform transform hover:scale-105 w-[44%] mx-[3%] text-[20px] font-bold text-[red] flex items-center justify-center py-[10px] border-3 rounded-lg border-[red]">Đăng ký</a>
+                    <a href="/sign_in" className="cursor-pointer transition-transform transform hover:scale-105 w-[44%] mx-[3%] text-[20px] font-bold text-[white] flex items-center justify-center py-[10px] border-3 bg-[red] rounded-lg border-[red]">Đăng nhập</a>
+                </div>
+            </div>
+            </Modal>
             <header id="yourElementId" className={`fixed z-50 w-full top-0 left-0 transition-transform duration-700 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-                <div className="flex z-50 h-[40px] overflow-hidden pl-[100px] bg-[#E9EFFF] items-center">
+                <div className="flex z-50 h-[40px] pl-[100px] bg-[#E9EFFF] items-center">
                 <Swiper
-
                     autoplay={{
                     delay: 5000,
                     disableOnInteraction: false,
@@ -320,29 +334,22 @@ export default function Header(item) {
                 </Swiper>
                 </div>
                 <div className="flex z-50 pl-[100px] bg-[#D70018] items-center">
-                    <div className="logo flex items-center">
+                    <a href="Trang_Chu" className="cursor-pointer logo flex items-center">
                         <img src={logoDark} className="h-[50px] my-[10px] mr-[50px]" alt="Logo" />
-                    </div>
-                    <div className="flex items-center h-[80px] group cursor-pointer relative ">
-                        <div className="p-[10px] bg-[#DF3346] group rounded-lg">
-                            <FontAwesomeIcon className="text-[white] font-bold" icon={faList} />
-                            <label className="text-white font-normal px-[10px]" style={{ fontStyle: 'normal' }}>Danh mục</label>
-                        </div>
-                        <ul className="absolute rounded-lg py-[10px] top-[80px] bg-white  w-[300px] text-[23px] px-[15px] items-center hidden group-hover:block">
-                            {listCategory}
-                        </ul>
-                    </div>
-                    <ul className={`z-100 block `}>
-                        <form className="mr-10 w-full flex justify-center items-center">
+                    </a>
+                    <ul className={`absolute z-100 block w-[45%] right-[500px]`}>
+                        <form className="mr-10 w-full">
                             <Search childWidth={item.childWidth}/>
                         </form>
                     </ul>
-                    <div className="text-[14px] hover:bg-[#DF3346] cursor-pointer flex text-[white] justify-center items-center h-[50px] p-[10px] rounded-lg">
-                        <FontAwesomeIcon className="text-[20px] mr-[10px]" icon={faPhone} />
-                        <div>
-                            <p>Gọi mua hàng</p>
-                            <p>1800.2097</p>
+                    <div className="flex items-center h-[80px] group relative ">
+                        <div className="p-[10px] bg-[#DF3346]  rounded-lg">
+                            <FontAwesomeIcon className="text-[white] font-bold" icon={faList} />
+                            <label className="text-white font-normal px-[10px]" style={{ fontStyle: 'normal' }}>Danh mục</label>
                         </div>
+                        <ul className="absolute rounded-lg py-[10px] top-[70px] bg-white  w-[300px] text-[23px] px-[15px] items-center hidden group-hover:block">
+                            {listCategory}
+                        </ul>
                     </div>
                     <ul className="absolute flex p-[30px] pt-[10px] pb-[10px] text-white text-[20px] right-[3%]">
                         <li className="text-[30px] px-[20px] hover:text-[red] cursor-pointer mx-[5px] relative rounded-lg transition delay-150 duration-300 ease-in-out hover:bg-[#EEFFF7]">
@@ -355,7 +362,7 @@ export default function Header(item) {
                             <p className="absolute top-[-10px] h-[25px] w-[25px] flex items-center justify-center rounded-[50%] bg-[red] right-0 text-white text-[15px]">{store.length || 0}</p>
                             {listStore && ListStore()}
                         </li>
-                        <li className="text-[30px] px-[20px] hover:text-[red] cursor-pointer mx-[5px] rounded-lg hover:bg-[#EEFFF7]">
+                        <li onClick={() => setOpen(true)} className="text-[30px] px-[20px] hover:text-[red] cursor-pointer mx-[5px] rounded-lg hover:bg-[#EEFFF7]">
                             <FontAwesomeIcon icon={faUser} />
                         </li>
                     </ul>

@@ -8,7 +8,7 @@ export const Favorite = (item) => {
     
   useEffect(() => {
     async function loadImages() {
-      const imagePaths = import.meta.glob('../../BackEnd/php/images/tat_ca_san_pham/**/*.{jpg,jpeg,png,gif,svg,webp}');
+      const imagePaths = import.meta.glob('../../BackEnd/php/images/Trang_Chu/**/*.{jpg,jpeg,png,gif,svg,webp}');
       const imagePromises = Object.values(imagePaths).map(importer => importer());
       const loadedImages = await Promise.all(imagePromises);
       setImages(loadedImages.map(module => module.default));

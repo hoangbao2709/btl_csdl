@@ -43,12 +43,9 @@ export default function Input() {
   const [submittedName, setSubmittedName] = useState("");
   const [submittedGia_goc, setSubmittedGia_goc] = useState("");
   const [submittedGiam_gia, setSubmittedGiam_gia] = useState("");
-  const [submittedTap, setSubmittedTap] = useState("");
-  const [submittedTac_gia, setSubmittedTac_gia] = useState("");
-  const [submittedDoi_tuong, setSubmittedDoi_tuong] = useState("");
-  const [submittedKhuon_kho, setSubmittedKhuon_kho] = useState("");
-  const [submittedSo_trang, setSubmittedSo_trang] = useState("");
+  const [submittedCompany, setSubmittedCompany] = useState("");
   const [submittedTrong_luong, setSubmittedTrong_luong] = useState("");
+  const [submittedDescription, setSubmittedDescription] = useState("");
   let data = null;
   const chillSwiperRef = useRef(null);
   const [from, setFrom] = useState(0);
@@ -57,7 +54,7 @@ export default function Input() {
   const [index, setIndex] = useState(0);
   const [id, setID] = useState();
 
-  data = Data("tat_ca_san_pham", "All");
+  data = Data("trang_chu", "All");
   useEffect(() => {
     if (data) {
       setID(data.length > 0 ? data[data.length - 1].id + 1 : 1);
@@ -66,13 +63,14 @@ export default function Input() {
 
   const rating = 4;
   const [final, setFullfinal] = useState({
-    Kien_thuc_khoa_hoc: false,
-    Lich_su_truyen_thong: false,
-    Tat_ca_san_pham: false,
-    Truyen_tranh: false,
-    Van_hoc_nuoc_ngoai: false,
-    Van_hoc_Viet_Nam: false,
-    Wings_book: false,
+    am_thanh: false,
+    dien_thoai_taplet: false,
+    dong_ho_camera: false,
+    do_gia_dung: false,
+    laptop: false,
+    pc_man_hinh_may_in: false,
+    phu_kien: false,
+    tivi: false,
   });
 
   const [item, setFullitem] = useState({
@@ -82,21 +80,26 @@ export default function Input() {
     gia: "",
     giam_gia: "",
     link: "",
-    Kien_thuc_khoa_hoc: false,
-    Lich_su_truyen_thong: false,
-    Truyen_tranh: false,
-    Van_hoc_nuoc_ngoai: false,
-    Van_hoc_Viet_Nam: false,
-    Wings_book: false,
+    am_thanh: false,
+    dien_thoai_taplet: false,
+    dong_ho_camera: false,
+    do_gia_dung: false,
+    laptop: false,
+    pc_man_hinh_may_in: false,
+    phu_kien: false,
+    tivi: false,
   });
 
   const handleChangeNew = (event) => {
     const { name, checked } = event.target;
     if (name in item) {
-      setFullfinal((prev) => ({
-        ...prev,
+      setFullfinal({
+        ...Object.keys(item).reduce((acc, key) => {
+          acc[key] = false;
+          return acc;
+        }, {}),
         [name]: checked,
-      }));
+      });
     }
   };
 
@@ -113,14 +116,11 @@ export default function Input() {
   const handleChange = (event) => {
     const { name, value, checked, type } = event.target;
     if (name === "name") setSubmittedName(value);
+    if (name === "company") setSubmittedCompany(value);
     if (name === "gia_goc") setSubmittedGia_goc(value);
     if (name === "giam_gia") setSubmittedGiam_gia(value);
-    if (name === "tap") setSubmittedTap("Tập: " + value);
-    if (name === "tac_gia") setSubmittedTac_gia(value);
-    if (name === "doi_tuong") setSubmittedDoi_tuong(value);
-    if (name === "khuon_kho") setSubmittedKhuon_kho(value);
-    if (name === "so_trang") setSubmittedSo_trang(value);
     if (name === "trong_luong") setSubmittedTrong_luong(value + " gram");
+    if (name === "description") setSubmittedDescription(value);
 
     if (type === "checkbox") {
       setFullitem((prev) => ({
@@ -330,8 +330,8 @@ export default function Input() {
               <div class="relative">
                 <input
                   type="text"
-                  id="tap"
-                  name="tap"
+                  id="company"
+                  name="company"
                   onChange={handleChange}
                   class="peer py-4 px-[10px] block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-sm placeholder:text-transparent focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none
                                 focus:pt-6
@@ -340,7 +340,7 @@ export default function Input() {
                                 not-placeholder-shown:pb-2
                                 autofill:pt-6
                                 autofill:pb-2"
-                  placeholder="Tập"
+                  placeholder="company"
                 />
                 <label
                   for="hs-floating-underline-input-email"
@@ -354,7 +354,7 @@ export default function Input() {
                                 peer-not-placeholder-shown:-translate-y-1.5
                                 peer-not-placeholder-shown:text-gray-500"
                 >
-                  Tập 
+                  Company 
                 </label>
               </div>
             </div>
@@ -384,69 +384,24 @@ export default function Input() {
             </button>
           </div>
           <Modal open={open2} onClose={() => setOpen2(false)}>
-            <div className="z-10 w-[400px]">
+            <div className="z-10 bg-black p-[30px] rounded-2xl w-[500px]">
+
+
+
               <div className="mb-2">
                 <label
-                  htmlFor="tac_gia"
+                  htmlFor="description"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Tác giả
+                  Mô tả
                 </label>
                 <input
                   type="text"
-                  id="tac_gia"
-                  name="tac_gia"
+                  id="description"
+                  name="description"
                   onChange={handleChange}
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Tác giả"
-                />
-              </div>
-              <div className="mb-2">
-                <label
-                  htmlFor="doi_tuong"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Đối tượng
-                </label>
-                <input
-                  type="text"
-                  id="doi_tuong"
-                  name="doi_tuong"
-                  onChange={handleChange}
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Đối tượng"
-                />
-              </div>
-              <div className="mb-2">
-                <label
-                  htmlFor="khuon_kho"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Khuôn khổ
-                </label>
-                <input
-                  type="text"
-                  id="khuon_kho"
-                  name="khuon_kho"
-                  onChange={handleChange}
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Khuôn khổ"
-                />
-              </div>
-              <div className="mb-2">
-                <label
-                  htmlFor="so_trang"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Số trang
-                </label>
-                <input
-                  type="text"
-                  id="so_trang"
-                  name="so_trang"
-                  onChange={handleChange}
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Số trang"
+                  placeholder="Mô tả"
                 />
               </div>
               <div className="mb-2">
@@ -500,71 +455,76 @@ export default function Input() {
             </div>
           </Modal>
 
-          <Modal className="z-10" open={open} onClose={() => setOpen(false)}>
-            <div className=" content-center z-10 w-[500px] mt-[30px] flex">
-              <ul className="w-[500px] text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black">
-                {Object.keys(final)
-                  .filter(
-                    (key) =>
-                      key.startsWith("Kien_thuc") ||
-                      key.startsWith("Lich_su") ||
-                      key.startsWith("Truyen") ||
-                      key.startsWith("Van_hoc") ||
-                      key.startsWith("Wings")
-                  )
-                  .map((key) => (
-                    <li
-                      key={key}
-                      className="w-full border-b border-gray-200 dark:border-gray-600"
-                    >
-                      <div className="flex items-center ps-3 h-[50px]">
-                        <input
-                          type="checkbox"
-                          id={key}
-                          name={key}
-                          checked={final[key]}
-                          onChange={handleChangeNew}
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                        />
-                        <label
-                          htmlFor={key}
-                          className="w-[70%] py-3 ms-2 text-[25px] font-medium text-gray-900 dark:text-gray-300"
-                        >
-                          {key.replace(/_/g, " ").toUpperCase()}
-                        </label>
-                      </div>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-            <div className="mt-[20px]">
-              <button
-                onClick={() => {
-                  setOpen(false);
-                  Object.entries(final).forEach(([key, value], index) => {
-                    item[key] = final[key];
-                  });
-                }}
-                type="button"
-                className="w-full text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mb-5"
-              >
-                Accept
-              </button>
-              <button
-                onClick={() => {
-                  setOpen(false);
-                  Object.keys(item)
-                    .slice(6)
-                    .forEach((key, index) => {
-                      item[key] = false;
-                      final[key] = false;
+          <Modal open={open} onClose={() => setOpen(false)}>
+            <div  className="z-10 bg-black p-[30px] rounded-2xl">
+              <div className="content-center z-10 w-[500px] mt-[30px] flex">
+                <ul className="w-[500px] text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-black">
+                  {Object.keys(final)
+                    .filter(
+                      (key) =>
+                        key.startsWith("am_thanh") ||
+                        key.startsWith("dien_thoai_taplet") ||
+                        key.startsWith("dong_ho_camera") ||
+                        key.startsWith("do_gia_dung") ||
+                        key.startsWith("laptop") ||
+                        key.startsWith("pc_man_hinh_may_in") ||
+                        key.startsWith("phu_kien") ||
+                        key.startsWith("tivi")
+                    )
+                    .map((key) => (
+                      <li
+                        key={key}
+                        className="w-full border-b border-gray-200 dark:border-gray-600"
+                      >
+                        <div className="flex items-center ps-3 h-[50px]">
+                          <input
+                            type="checkbox"
+                            id={key}
+                            name={key}
+                            checked={final[key]}
+                            onChange={handleChangeNew}
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                          />
+                          <label
+                            htmlFor={key}
+                            className="w-[70%] py-3 ms-2 text-[25px] font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            {key.replace(/_/g, " ").toUpperCase()}
+                          </label>
+                        </div>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+              <div className="mt-[20px]">
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    Object.entries(final).forEach(([key, value], index) => {
+                      item[key] = final[key];
                     });
-                }}
-                type="button"
-                className="w-full text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5"
-              >
-                Cancel
-              </button>
+                  }}
+                  type="button"
+                  className="w-full text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mb-5"
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    Object.keys(item)
+                      .slice(6)
+                      .forEach((key, index) => {
+                        item[key] = false;
+                        final[key] = false;
+                      });
+                  }}
+                  type="button"
+                  className="w-full text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </Modal>
           <div
@@ -594,130 +554,103 @@ export default function Input() {
           </div>
         </div>
       </form>
-      <div className="w-[700px] ml-[2%] z-0 flex justify-center items-center bg-">
-        <div className="w-[100px] h-[515px]">
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCorners}
-            onDragEnd={handleDragEnd}
-          >
+      <div className="w-[1000px] ml-[2%] z-0 flex justify-center items-center bg-">
+        <div>
+          <div className="w-[600px] h-[515px]">
+          <div className="z-0 relative overflow-hidden p-0 m-0 mx-[25px] bg-white shadow-lg rounded-lg">
             <div className="relative">
-              <SortableContext
-                items={files}
-                strategy={verticalListSortingStrategy}
+              <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                navigation={true}
+                modules={[Navigation]}
+                className="w-full h-auto max-w-[273px] mx-auto"
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
               >
-                <Swiper
-                  modules={[Scrollbar]}
-                  spaceBetween={30}
-                  slidesPerView={3}
-                  scrollbar={{ draggable: true }}
-                  direction="vertical"
-                  style={{ height: "500px" }}
-                  allowTouchMove={false}
-                  onSwiper={(swiper) => (chillSwiperRef.current = swiper)}
-                >
-                  {files.length > 0 ? (
-                    <div
-                      className="flex w-full absolute top-0 z-20 cursor-pointer justify-center"
-                      onClick={handleDown}
-                    >
-                      <FontAwesomeIcon
-                        className="flex justify-center items-center text-white bottom-0 h-[30px] w-[30px] cursor-pointer bg-opacity-50 bg-[red]"
-                        icon={faChevronUp}
-                      />
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-
-                  {files.map((image, ind) => {
-                    return (
-                      <SwiperSlide
-                        className="cursor-pointer"
-                        onClick={() => HandleClick(ind)}
-                      >
-                        {edit ? (
-                          <Task
-                            key={image.id}
-                            id={image.id}
-                            title={image}
-                            handleClick={HandleClick}
-                            index={ind}
-                          />
-                        ) : (
-                          <img
-                            className="w-full h-auto  object-contain "
-                            src={URL.createObjectURL(image.title)}
-                            alt={`Slide ${index + 1}`}
-                          />
-                        )}
-                      </SwiperSlide>
-                    );
-                  })}
-                  {files.length > 0 ? (
-                    <div
-                      className="flex w-full z-50 absolute bottom-0 justify-center"
-                      onClick={handleUp}
-                    >
-                      <FontAwesomeIcon
-                        className="flex justify-center items-center text-white bottom-0 h-[30px] w-[30px] cursor-pointer bg-opacity-50 bg-[red]"
-                        icon={faChevronDown}
-                      />
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                </Swiper>
-              </SortableContext>
-            </div>
-          </DndContext>
-          {files.length > 0 ? (
-            <div
-              class={`inline-flex items-center justify-center rounded-lg mt-[20px] cursor-pointer h-[50px] w-full bg-[#77CBDE] ${
-                edit ? "bg-[#FF5555] text-[white]" : ""
-              }`}
-              onClick={handleEdit}
-            >
-              <span class="w-full inline-flex items-center justify-center text-[14px] font-medium ">
-                {edit ? "Edit Image" : "Show Image"}
-              </span>
-            </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
-        <div className="z-0 relative overflow-hidden p-0 m-0 mx-[25px] bg-white shadow-lg rounded-lg">
-          <div className="relative">
-            <Swiper
-              spaceBetween={30}
-              centeredSlides={true}
-              navigation={true}
-              modules={[Navigation]}
-              className="w-full h-auto max-w-[273px] mx-auto"
-              onSwiper={(swiper) => (swiperRef.current = swiper)}
-            >
-              {files.map((image, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="flex justify-center items-center"
-                >
-                  <div
-                    onClick={() => handleMinus(index)}
-                    className="z-10 absolute flex items-center justify-center h-[30px] w-[30px] cursor-pointer top-[3%] right-[3%] bg-red-600 rounded-[50%] transition-transform transform hover:scale-110"
+                {files.map((image, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className="flex justify-center items-center"
                   >
-                    <FontAwesomeIcon className="text-white" icon={faMinus} />
-                  </div>
-                  <img
-                    className="w-full h-auto rounded-lg shadow-md object-cover"
-                    src={URL.createObjectURL(image.title)}
-                    alt={`Slide ${index + 1}`}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                    <div
+                      onClick={() => handleMinus(index)}
+                      className="z-10 absolute flex items-center justify-center h-[30px] w-[30px] cursor-pointer top-[3%] right-[3%] bg-red-600 rounded-[50%] transition-transform transform hover:scale-110"
+                    >
+                      <FontAwesomeIcon className="text-white" icon={faMinus} />
+                    </div>
+                    <img
+                      className="w-full h-auto rounded-lg shadow-md object-cover"
+                      src={URL.createObjectURL(image.title)}
+                      alt={`Slide ${index + 1}`}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCorners}
+              onDragEnd={handleDragEnd}
+            >
+              <div className="relative mt-[50px]">
+                <SortableContext
+                  items={files}
+                  strategy={verticalListSortingStrategy}
+                >
+                  <Swiper
+                    modules={[Scrollbar]}
+                    spaceBetween={10}
+                    slidesPerView={7}
+                    scrollbar={{ draggable: true }}
+                    style={{ height: "100px" }}
+                    allowTouchMove={false}
+                    onSwiper={(swiper) => (chillSwiperRef.current = swiper)}
+                  >
+                    {files.map((image, ind) => {
+                      return (
+                        <SwiperSlide
+                          className="cursor-pointer"
+                          onClick={() => HandleClick(ind)}
+                        >
+                          {edit ? (
+                            <Task
+                              key={image.id}
+                              id={image.id}
+                              title={image}
+                              handleClick={HandleClick}
+                              index={ind}
+                            />
+                          ) : (
+                            <img
+                              className="w-[100px] rounded-2xl border-gray-400 h-auto border-2 py-[5px] object-contain "
+                              src={URL.createObjectURL(image.title)}
+                              alt={`Slide ${index + 1}`}
+                            />
+                          )}
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                </SortableContext>
+              </div>
+            </DndContext>
+            {files.length > 0 ? (
+              <div
+                class={`inline-flex z-50 items-center justify-center rounded-lg mt-[20px] cursor-pointer h-[50px] w-full bg-[#77CBDE] ${
+                  edit ? "bg-[#FF5555] text-[white]" : ""
+                }`}
+                onClick={handleEdit}
+              >
+                <span class="w-full inline-flex items-center justify-center text-[14px] font-medium ">
+                  {edit ? "Edit Image" : "Show Image"}
+                </span>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
-
         <div className="w-[45%] h-[515px] rounded-3xl block relative">
           <div className="items-center break-words">
             {submittedName && (
@@ -725,11 +658,6 @@ export default function Input() {
                 <label className="text-[30px] block break-words">
                   {submittedName}
                 </label>
-                {submittedTap && (
-                  <label className="mt-0 text-[30px] block">
-                    {submittedTap}
-                  </label>
-                )}
                 <div className="flex items-center">
                   <div>
                     <label className="text-[25px]">Rating: </label>
@@ -755,6 +683,15 @@ export default function Input() {
               </div>
             )}
           </div>
+          {submittedCompany && (
+            <label className="text-[20px]">
+              Xuất sứ: {" "}
+              <strong className="text-[red]">
+                {submittedCompany}
+              </strong>
+            </label>
+
+          )}
           {submittedGia_goc && (
             <div>
               <div className="border-t-2 border-black w-full my-2"></div>
@@ -811,41 +748,9 @@ export default function Input() {
               )}
               <div className="border-t-2 border-black w-full mt-2"></div>
             </div>
+            
           )}
-          {submittedTac_gia && (
-            <li>
-              <label className="text-[20px]">
-                Tác giả:{" "}
-                <strong className="text-[red]">{submittedTac_gia}</strong>
-              </label>
-            </li>
-          )}
-          {submittedDoi_tuong && (
-            <li>
-              <label className="text-[20px]">
-                Đối tượng:{" "}
-                <strong className="text-[red]">{submittedDoi_tuong}</strong>
-              </label>
-            </li>
-          )}
-          {submittedKhuon_kho && (
-            <li>
-              <label className="text-[20px]">
-                Khuôn khổ:{" "}
-                <strong className="text-[red]">{submittedKhuon_kho}</strong>
-              </label>
-            </li>
-          )}
-          {submittedSo_trang && (
-            <li>
-              <label className="text-[20px]">
-                Số trang:{" "}
-                <strong className="text-[red]">
-                  {formatGram(submittedSo_trang)}
-                </strong>
-              </label>
-            </li>
-          )}
+
           {submittedTrong_luong && (
             <li>
               <label className="text-[20px]">

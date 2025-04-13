@@ -1,17 +1,18 @@
 import Header from "./header/header";
 import Images from "./review/image";
-import Tat_ca_san_pham  from "./total/Tat_ca_san_pham";
-import Kien_thuc_khoa_hoc  from "./total/Kien_thuc_khoa_hoc";
-import Lich_su_truyen_thong  from "./total/Lich_su_truyen_thong";
-import Truyen_tranh  from "./total/Truyen_tranh";
-import Van_hoc_nuoc_ngoai  from "./total/Van_hoc_nuoc_ngoai";
-import Van_hoc_Viet_Nam  from "./total/Van_hoc_Viet_Nam";
-import Wings_book  from "./total/Wings_book";
+import Trang_Chu  from "./total/Trang_chu";
+import Dien_thoai_Taplet  from "./total/Dien_thoai_Taplet";
+import Laptop  from "./total/Laptop";
+import Am_thanh  from "./total/Am_thanh";
+import Dong_ho_Camera  from "./total/Dong_ho_Camera";
+import Do_gia_dung  from "./total/Do_gia_dung";
+import Phu_kien  from "./total/Phu_kien";
+import PC_man_hinh_May_in  from "./total/PC_man_hinh_May_in";
+import Tivi  from "./total/Tivi";
 import Favorite  from "./total/Favorite";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import bg from './images/nen2.jpg';
-
 
 const Main = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const Main = () => {
   if (location.pathname !== '/') {
     resultLocation = location.pathname;
   } else {
-    resultLocation = "/Tat_ca_san_pham";
+    resultLocation = "/Trang_Chu";
   }
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -69,22 +70,24 @@ const Main = () => {
       }}
     >
       <Header childWidth={childWidth}/>
-      <div className="flex pt-[140px]">
+      <a className="flex pt-[140px]">
         <Images />
-      </div>
+      </a>
       <div className={`main flex w-[100%] justify-center mt-[50px] `}>
         <div className='w-[1200px] flex'>
           <div className='w-[100%] container mx-auto px-10 '>
             <Routes>
-              <Route path="/" element={<Tat_ca_san_pham Width={childWidth}/>} />
-              <Route path="/Tat_ca_san_pham/:pageNumber?" element={<Tat_ca_san_pham resultLocation="/main/Tat_ca_san_pham" Width={childWidth} />} />
-              <Route path="/Kien_thuc_khoa_hoc/:pageNumber?" element={<Kien_thuc_khoa_hoc resultLocation="/main/Kien_thuc_khoa_hoc" Width={childWidth} />} />
-              <Route path="/Lich_su_truyen_thong/:pageNumber?" element={<Lich_su_truyen_thong resultLocation="/main/Lich_su_truyen_thong" Width={childWidth} />} />
-              <Route path="/Truyen_tranh/:pageNumber?" element={<Truyen_tranh resultLocation="/main/Truyen_tranh" Width={childWidth} />} />
-              <Route path="/Van_hoc_nuoc_ngoai/:pageNumber?" element={<Van_hoc_nuoc_ngoai resultLocation="/main/Van_hoc_nuoc_ngoai" Width={childWidth} />} />
-              <Route path="/Van_hoc_Viet_Nam/:pageNumber?" element={<Van_hoc_Viet_Nam resultLocation="/main/Van_hoc_Viet_Nam" Width={childWidth} />} />
+              <Route path="/" element={<Trang_Chu Width={childWidth}/>} />
+              <Route path="/Trang_Chu/:pageNumber?" element={<Trang_Chu resultLocation="/main/Trang_Chu" Width={childWidth} />} />
+              <Route path="/Dien_thoai_Taplet/:pageNumber?" element={<Dien_thoai_Taplet resultLocation="/main/Kien_thuc_khoa_hoc" Width={childWidth} />} />
+              <Route path="/Laptop/:pageNumber?" element={<Laptop resultLocation="/main/Lich_su_truyen_thong" Width={childWidth} />} />
+              <Route path="/Am_thanh/:pageNumber?" element={<Am_thanh resultLocation="/main/Truyen_tranh" Width={childWidth} />} />
+              <Route path="/Dong_ho_Camera/:pageNumber?" element={<Dong_ho_Camera resultLocation="/main/Van_hoc_nuoc_ngoai" Width={childWidth} />} />
+              <Route path="/Do_gia_dung/:pageNumber?" element={<Do_gia_dung resultLocation="/main/Van_hoc_Viet_Nam" Width={childWidth} />} />
+              <Route path="/Phu_kien/:pageNumber?" element={<Phu_kien resultLocation="/main/Van_hoc_Viet_Nam" Width={childWidth} />} />
+              <Route path="/PC_man_hinh_May_in/:pageNumber?" element={<PC_man_hinh_May_in resultLocation="/main/Van_hoc_Viet_Nam" Width={childWidth} />} />
+              <Route path="/Tivi/:pageNumber?" element={<Tivi resultLocation="/main/Van_hoc_Viet_Nam" Width={childWidth} />} />
               <Route path="/Favorite/:pageNumber?" element={<Favorite resultLocation="/main/Favorite" Width={childWidth} />} />
-              ${childWidth >= 1024 ? 'block' : 'hidden'} <Route path="/Wings_book/:pageNumber?" element={<Wings_book resultLocation="/main/Wings_book" Width={childWidth} />} />
             </Routes>
           </div>
         </div>

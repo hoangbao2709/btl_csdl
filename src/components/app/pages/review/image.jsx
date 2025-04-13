@@ -25,8 +25,8 @@ let images = [
 
 export default function Images() {
     return (
-        <header className='w-full flex justify-center items-center'>
-            <div className='w-[1200px] flex'>
+        <header className='w-full z-0 flex justify-center items-center'>
+            <div className='w-[1200px] z-0 flex'>
                 <Swiper
                     spaceBetween={30}
                     centeredSlides={true}
@@ -36,7 +36,7 @@ export default function Images() {
                     }}
                     navigation={true}
                     modules={[Autoplay, Pagination, Navigation]}
-                    className="w-[73%] justify-center items-center rounded-2xl"
+                    className="w-[73%] z-0 justify-center items-center rounded-2xl"
                 >
                     {images.map((image, index) => (
                         <SwiperSlide key={index}>
