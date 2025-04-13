@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "tiem_sach";
+$dbname = "cellphones";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -17,26 +17,25 @@ $id = mysqli_real_escape_string($conn, $_POST["id"]);
 $name = mysqli_real_escape_string($conn, $_POST["name"]);
 $gia_goc = mysqli_real_escape_string($conn, $_POST["gia_goc"]);
 $giam_gia = mysqli_real_escape_string($conn, $_POST["giam_gia"]);
-$gia = intval($gia_goc - ($gia_goc * $giam_gia) / 100);
-$tap = mysqli_real_escape_string($conn, $_POST["tap"]);
-$tac_gia = mysqli_real_escape_string($conn, $_POST["tac_gia"]);
-$doi_tuong = mysqli_real_escape_string($conn, $_POST["doi_tuong"]);
-$khuon_kho = mysqli_real_escape_string($conn, $_POST["khuon_kho"]);
-$so_trang = mysqli_real_escape_string($conn, $_POST["so_trang"]);
+$gia = intval($gia_goc - (($gia_goc * $giam_gia) / 100));
+$description = mysqli_real_escape_string($conn, $_POST["description"]);
 $trong_luong = mysqli_real_escape_string($conn, $_POST["trong_luong"]);
 $status = "Active";
+$company = mysqli_real_escape_string($conn, $_POST["company"]);
 
 $tables = [
-    "Kien_thuc_khoa_hoc",
-    "Lich_su_truyen_thong",
-    "Truyen_tranh",
-    "Van_hoc_nuoc_ngoai",
-    "Van_hoc_Viet_Nam",
-    "Wings_book",
+    "am_thanh",
+    "dien_thoai_taplet",
+    "dong_ho_camera",
+    "do_gia_dung",
+    "laptop",
+    "pc_man_hinh_may_in",
+    "phu_kien",
+    "tivi",
 ];
 
-$sql = "INSERT INTO tat_ca_san_pham (id, name, gia_goc, gia, giam_gia, tap, tac_gia, doi_tuong, khuon_kho, so_trang, trong_luong, Page, Status) 
-        VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$tap', '$tac_gia', '$doi_tuong', '$khuon_kho', '$so_trang', '$trong_luong', 'tat_ca_san_pham', 'Active')";
+$sql = "INSERT INTO trang_chu (id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
+        VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', 'Active', '$company')";
 
 $response = [];
 if ($conn->query($sql) === TRUE) {
@@ -52,8 +51,8 @@ if ($conn->query($sql) === TRUE) {
 
 foreach ($tables as $table) {
     if (isset($_POST[$table])) {
-        $sql = "INSERT INTO " . strtolower($table) . "(id, name, gia_goc, gia, giam_gia, tap, tac_gia, doi_tuong, khuon_kho, so_trang, trong_luong, Page, Status)
-                VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$tap', '$tac_gia', '$doi_tuong', '$khuon_kho', '$so_trang', '$trong_luong', '$table', 'Active')";
+        $sql = "INSERT INTO " . strtolower($table) . "(id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
+                VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', 'Active', '$company')";
 
         if ($conn->query($sql) !== TRUE) {
             $response["success"] = false;
@@ -66,13 +65,15 @@ foreach ($tables as $table) {
 }
 
 $upload_dirs = [
-    'kien_thuc_khoa_hoc' => './images/kien_thuc_khoa_hoc/' . $id . '/',
-    'lich_su_truyen_thong' => './images/lich_su_truyen_thong/' . $id . '/',
-    'tat_ca_san_pham' => './images/tat_ca_san_pham/' . $id . '/',
-    'truyen_tranh' => './images/truyen_tranh/' . $id . '/',
-    'van_hoc_nuoc_ngoai' => './images/van_hoc_nuoc_ngoai/' . $id . '/',
-    'van_hoc_viet_nam' => './images/van_hoc_viet_nam/' . $id . '/',
-    'wings_book' => './images/wings_book/' . $id . '/'
+    'am_thanh' => './images/Am_thanh/' . $id . '/',
+    'dien_thoai_taplet' => './images/Dien_thoai_Taplet/' . $id . '/',
+    'dong_ho_camera' => './images/Do_gia_dung/' . $id . '/',
+    'do_gia_dung' => './images/Dong_ho_Camera/' . $id . '/',
+    'laptop' => './images/Laptop/' . $id . '/',
+    'pc_man_hinh_may_in' => './images/PC_man_hinh_May_in/' . $id . '/',
+    'phu_kien' => './images/Phu_kien/' . $id . '/',
+    'tivi' => './images/Tivi/' . $id . '/',
+    'trang_chu' => './images/Trang_Chu/' . $id . '/'
 ];
 
 $countName = 0;
@@ -84,11 +85,11 @@ if (isset($_FILES['file'])) {
         $fileInfo = pathinfo($name);
         $filename = $id . '_' . basename($countName++) . '_.' . $fileInfo['extension'];
 
-        if (!file_exists($upload_dirs['tat_ca_san_pham'])) {
-            mkdir($upload_dirs['tat_ca_san_pham'], 0777, true);
+        if (!file_exists($upload_dirs['trang_chu'])) {
+            mkdir($upload_dirs['trang_chu'], 0777, true);
         }
 
-        $target_path = $upload_dirs['tat_ca_san_pham'] . $filename;
+        $target_path = $upload_dirs['trang_chu'] . $filename;
 
         if (move_uploaded_file($temp_path, $target_path)) {
             foreach ($tables as $table) {

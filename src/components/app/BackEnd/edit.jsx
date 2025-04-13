@@ -63,7 +63,7 @@ export default function Edit() {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/Data.php?&url=${encodeURIComponent("tat_ca_san_pham")}&variable=${encodeURIComponent(value)}`)
+        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/Data.php?&url=${encodeURIComponent("trang_chu")}&variable=${encodeURIComponent(value)}`)
             .then((response) => response.json())
             .then((data) => {
                 setData(data);
@@ -212,7 +212,7 @@ export default function Edit() {
     
     async function loadAndProcessImages() {
         try {
-            const imagePaths = import.meta.glob('./php/images/tat_ca_san_pham/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            const imagePaths = import.meta.glob('./php/images/trang_chu/**/*.{jpg,jpeg,png,gif,svg,webp}');
             const imagePromises = Object.values(imagePaths).map(importer => importer());
             const loadedImages = await Promise.all(imagePromises);
             const img = loadedImages.map(module => module.default);

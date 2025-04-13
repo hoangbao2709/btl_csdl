@@ -83,12 +83,10 @@ export default function Product() {
         tap: 'N/A',
         gia: 0,
         gia_goc: 0,
-        tac_gia: 'N/A',
-        doituong: 'N/A',
-        khuon_kho: 'N/A',
-        so_trang: 'N/A',
+        description: 'N/A',
         trong_luong: 0,
     };
+    console.log(data);
     const [favourite, setFavourite] = useState(false);
 
     useEffect(() => {
@@ -290,16 +288,7 @@ export default function Product() {
                                 </div>
                                 <div className="border-t-2 border-black w-full mt-2"></div>
                                 <li>
-                                    <label className="sm:text-[30px] max-sm:text-[20px]">Tác giả: <strong className="text-[red]">{element.tac_gia}</strong></label>
-                                </li>
-                                <li>
-                                    <label className="sm:text-[30px] max-sm:text-[20px]">Đối tượng: <strong className="text-[red]">{element.tac_gia}</strong></label>
-                                </li>
-                                <li>
-                                    <label className="sm:text-[30px] max-sm:text-[20px]">Khuôn khổ: <strong className="text-[red]">{element.khuon_kho}</strong></label>
-                                </li>
-                                <li>
-                                    <label className="sm:text-[30px] max-sm:text-[20px]">Số trang: <strong className="text-[red]">{element.so_trang}</strong></label>
+                                    <label className="sm:text-[30px] max-sm:text-[20px]">Mô tả: <strong className="text-[red]">{element.description}</strong></label>
                                 </li>
                                 <li>
                                     <label className="sm:text-[30px] max-sm:text-[20px]">Trọng lượng: <strong className="text-[red]">{formatGram(element.trong_luong)} gram</strong></label>

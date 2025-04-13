@@ -37,17 +37,7 @@ export function useData(img = [], url, variable) {
         }
         let tempItem = {
           img: tempImg,
-          id: data[0].id,
-          gia_goc: data[0].gia_goc,
-          gia: data[0].gia,
-          giam_gia: data[0].giam_gia,
-          name: data[0].name,
-          tap: data[0].tap,
-          tac_gia: data[0].tac_gia,
-          khuon_kho: data[0].khuon_kho,
-          so_trang: data[0].so_trang,
-          trong_luong: data[0].trong_luong,
-          page: data[0].Page,
+
         };
         items.push(tempItem);
         tempImg = [];
@@ -57,6 +47,6 @@ export function useData(img = [], url, variable) {
       }
     }
   }, [data, img]);
-
+  console.log("images",images);
   return images;
 }

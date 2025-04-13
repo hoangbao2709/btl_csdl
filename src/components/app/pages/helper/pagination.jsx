@@ -44,14 +44,16 @@ export const Test = (item) => {
   const lastScrollY = useRef(0);
 
   let linkCategory = {
-    "/main": "Tất cả sản phẩm",
-    "/main/Tat_ca_san_pham": "Tất cả sản phẩm",
-    "/main/Lich_su_truyen_thong": "Lịch sử truyền thống",
-    "/main/Van_hoc_Viet_Nam": "Văn học Việt Nam",
-    "/main/Van_hoc_nuoc_ngoai": "Văn học nước ngoài",
-    "/main/Kien_thuc_khoa_hoc": "Kiến thức khoa học",
-    "/main/Truyen_tranh": "Truyện tranh",
-    "/main/Wings_book": "Wings book",
+    "/main": "Trang chủ",
+    "/main/Trang_Chu": "Trang chủ",
+    "/main/Dien_thoai_Taplet": "Điện thoại, Tablet",
+    "/main/Laptop": "Laptop",
+    "/main/Am_thanh": "Âm thanh",
+    "/main/Dong_ho_Camera": "Đồng hồ, Camera",
+    "/main/Do_gia_dung": "Đồ gia dụng",
+    "/main/Phu_kien": "Phụ kiện",
+    "/main/PC_man_hinh_May_in": "PC, màn hình, Máy in",
+    "/main/Tivi": "Tivi",
     "/main/Favorite": "Wishlist",
   };
 

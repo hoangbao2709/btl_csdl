@@ -48,17 +48,16 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
             >   
                 <div className='w-full transition duration-700 ease-in-out p-2 relative fix hover:shadow-2xl hover:bg-white'>
                     <a href={`/Product/${element.page}/${element.id}`} >
-                        <div className='overflow-hidden  fit object-cover'>
+                        <div className='overflow-hidden fit object-cover'>
                             <img
                                 src={imgSrc}
                                 alt="Framed"
-                                className='h-[200px]'
                             />
                         </div>
                         <p className='font-bold absolute flex justify-center items-center top-0 right-0 bg-[red] h-[50px] w-[50px] rounded-[50%] text-[white]'> -{element.giam_gia}%</p>
                         <div className='left-0 h-[100px] px-1 w-full right-0 py-1 bg-white relative'>
                             <div className='relative'>
-                                <p className='font-bold h-[70px] block w-full overflow-hidden'>{element.name}</p>
+                                <p className='font-bold h-[70px] block w-full overflow-hidden'>{element.name} - tap: {element.tap}</p>
                             </div>
                             <div className='text-[red] text-[15px] w-full absolute bottom-0'>
                                 <div className='relative w-full'>

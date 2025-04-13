@@ -53,12 +53,10 @@ export function useData(img = [], url) {
                     gia: getData[parseInt(tempNumber)].gia,
                     giam_gia: getData[parseInt(tempNumber)].giam_gia,
                     name: getData[parseInt(tempNumber)].name,
-                    tap: getData[parseInt(tempNumber)].tap,
-                    tac_gia: getData[parseInt(tempNumber)].tac_gia,
-                    khuon_kho: getData[parseInt(tempNumber)].khuon_kho,
-                    so_trang: getData[parseInt(tempNumber)].so_trang,
+                    description: getData[parseInt(tempNumber)].description,
                     trong_luong: getData[parseInt(tempNumber)].trong_luong,
                     page: getData[parseInt(tempNumber)].Page,
+                    from: getData[parseInt(tempNumber)].from,
                 };
                 items.push(tempItem);
                 tempImg = [];
