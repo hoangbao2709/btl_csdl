@@ -16,19 +16,27 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import ip1 from "./../images/iphone-16-pro-max.webp";
-import ip2 from "./../images/iphone-16-pro-max.webp";
-import ip3 from "./../images/iphone-16-pro-max.webp";
-import ip4 from "./../images/iphone-16-pro-max.webp";
-import ip5 from "./../images/iphone-16-pro-max.webp";
-import ip6 from "./../images/iphone-16-pro-max.webp";
-import ip7 from "./../images/iphone-16-pro-max.webp";
-import ip8 from "./../images/iphone-16-pro-max.webp";
-import ip9 from "./../images/iphone-16-pro-max.webp";
-import ip10 from "./../images/iphone-16-pro-max.webp";
 
 export const Test = (item) => {
-  const ipArray = [ip1, ip2, ip3, ip4, ip5, ip6, ip7, ip8, ip9, ip10];
+
+  const Am_thanh = item.images[0];
+  const Dien_thoai_Taplet = item.images[1];
+  const Do_gia_dung = item.images[2];
+  const Dong_ho_Camera = item.images[3];
+  const Laptop = item.images[4];
+  const PC_man_hinh_May_in = item.images[5];
+  const Phu_kien = item.images[6];
+  const Tivi = item.images[7];
+
+  const getImg = (img) => {
+    const result = img.filter(ele => {
+        const fileName = ele.split('/');
+        const pathParts = fileName[fileName.length - 1].split("_");
+        return pathParts.includes("0");
+    });
+    return result;
+  };
+
   return (
     <div>
       <div>
@@ -38,45 +46,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Dien_thoai_Taplet.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-2xl mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-lg overflow-hidden">
-                          Máy mới 100% , chính hãng Apple Việt Nam. CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -86,45 +82,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Laptop.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-2xl mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-lg overflow-hidden">
-                          Máy mới 100% , chính hãng Apple Việt Nam. CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -134,93 +118,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {PC_man_hinh_May_in.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-2xl mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-lg overflow-hidden">
-                          Máy mới 100% , chính hãng Apple Việt Nam. CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
-      <div>
-        <p className="text-[30px] font-bold">MÁY TÍNH BẢNG</p>
-        <Swiper
-            slidesPerView={5}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="w-[1200px]"
-        >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
-                    </div>
-                  </a>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-2xl mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-lg overflow-hidden">
-                          Máy mới 100% , chính hãng Apple Việt Nam. CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -230,27 +154,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Am_thanh.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -260,27 +190,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Dong_ho_Camera.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -290,27 +226,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Do_gia_dung.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -320,27 +262,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Tivi.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
       <div>
@@ -350,57 +298,33 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
+            {Phu_kien.map((image, index) => {
+              const imgs = getImg(image.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer">
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{image.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{image.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
                     </div>
-                  </a>
-                </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
-      <div>
-        <p className="text-[30px] font-bold">LINH KIỆN MÁY TÍNH</p>
-        <Swiper
-            slidesPerView={5}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="w-[1200px]"
-        >
-            {ipArray.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <a className="cursor-pointer">
-                    <div className="h-[400px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                      <img className="rounded-lg" src={image} alt={`Slide ${index + 1}`} />
-                      <p className="font-bold">iPhone 16 Pro Max 256GB | Chính hãng VN/A</p>
-                      <div className="relative h-full">
-                        <strong className="text-[red] text-[16px]">34.990.000</strong>
-                        <label
-                          className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                          id="original-price"
-                        >
-                          <strong>34.990.000</strong>
-                        </label>
-                        <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">Máy mới 100% , chính hãng Apple Việt Nam.
-                        CellphoneS hiện là đại lý bán lẻ uỷ quyền iPhone chính hãng VN/A của Apple Việt Nam</p>
-                      </div>
-                    </div>
-                  </a>
-                </SwiperSlide>
-            ))}
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
         </Swiper>
       </div>
     </div>

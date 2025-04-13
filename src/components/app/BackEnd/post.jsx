@@ -42,27 +42,33 @@ export default function Post() {
     const [currentCategory, setCurrentCategory] = useState("Tất cả sản phẩm");
     const [index, setIndex] = useState(0);
     const [ID, setID] = useState(0);
+
     let category = [
         "Tất cả sản phẩm",
-        "Lịch sử truyền thống",
-        "Văn học Việt Nam",
-        "Văn học nước ngoài",
-        "Kiến thức, khoa học",
-        "Truyện tranh",
-        "Wings Books"
+        "Điện thoại, Tablet",
+        "Laptop",
+        "Âm thanh, Mic thu âm",
+        "Đồng hồ, Camera",
+        "Đồ gia dụng",
+        "Phụ kiện",
+        "PC, màn hình, Máy in",
+        "Tivi",
     ];
 
     const [linkCategory, setLinkCategory] = useState(new Array(category.length).fill(false));
 
     let linkcategory = [
-        "tat_ca_san_pham",
-        "lich_su_truyen_thong",
-        "van_hoc_Viet_Nam",
-        "van_hoc_nuoc_ngoai",
-        "kien_thuc_khoa_hoc",
-        "truyen_tranh",
-        "wings_book",
+        "Trang_chu",
+        "Dien_thoai_Taplet",
+        "Laptop",
+        "Am_thanh",
+        "Dong_ho_Camera",
+        "Do_gia_dung",
+        "Phu_kien",
+        "PC_man_hinh_May_in",
+        "Tivi",
     ];
+
 
     const location = useLocation();
     let pathParts = location.pathname;

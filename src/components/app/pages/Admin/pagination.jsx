@@ -181,12 +181,9 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
                 </li>
                 {open[idx] && element.id && (
                     <Modal open={open[idx]} onClose={() => toggleModal(idx)}>
-                        <ul className={`w-[500px] text-[30px] text-white`}>
-                            <li className="px-[2%]">Tập: <label className="text-[red]">{element.tap || ""}</label></li>
-                            <li className="px-[2%] bg-[#2D2F39]">Tác giả: <label className="text-[red]">{element.tac_gia || ""}</label></li>
-                            <li className="px-[2%]">Đối tượng: <label className="text-[red]">{element.doi_tuong || ""}</label></li>
-                            <li className="px-[2%] bg-[#2D2F39]">Khuôn khổ: <label className="text-[red]">{element.khuon_kho || ""}</label></li>
-                            <li className="px-[2%]">Số trang: <label className="text-[red]">{element.Page || ""}</label></li>
+                        <ul className={`w-[500px] bg-black p-[30px] rounded-2xl text-[30px] text-white`}>
+                            <li className="px-[2%] bg-[#2D2F39]">Mô tả: <label className="text-[red]">{element.description || ""}</label></li>
+                            <li className="px-[2%]">Company: <label className="text-[red]">{element.Page || ""}</label></li>
                             <li className="px-[2%] bg-[#2D2F39]">Trọng lượng: <label className="text-[red]">{element.trong_luong || ""}</label></li>
                         </ul>
                     </Modal>

@@ -95,7 +95,7 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
         <div className='flex justify-center content-center'>
             <div className={`xl:w-[900px] lg:w-[full] md:w-[full] max-lg:w-[full] sm:w-[full]  `}>
                 <ul>
-                    {totalView}
+                   ` {totalView}`
                 </ul>
             </div>
         </div>

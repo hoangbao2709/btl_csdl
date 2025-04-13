@@ -430,15 +430,6 @@ export const Test = (item) => {
         </div>
         <div className="flex">
           <header className={` min-w-[250px] `}>
-            {/* // ${
-                //     lastScrollY.current <= 500 ? 'opacity-0 transform translate-y-10' :
-                //     lastScrollY.current <= 600 ? 'top-[35%] opacity-100 transform translate-y-0' :
-                //     lastScrollY.current <= 700 ? 'top-[25%] opacity-100 transform translate-y-0' :
-                //     lastScrollY.current <= 800 ? 'top-[20%] opacity-100 transform translate-y-0' :
-                //     lastScrollY.current <= 900 ? 'top-[10%] opacity-100 transform translate-y-0' :
-                //     'top-[10%] opacity-100 transform translate-y-0'
-                // }`}>      */}
-
             <div className="font-medium bg-white mb-[40px]">
               <div>
                 <p className="flex pt-[10px] pl-[10px] bg-[red] pb-[10px] relative text-[20px] items-center text-[white]">

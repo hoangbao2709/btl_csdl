@@ -21,6 +21,9 @@ export function useData(img = [], url) {
       fetchData();
   }, [url]);
 
+  if(url === "Laptop")
+    console.log(data);
+
   function getTampNumber(item){
     const fileName = item.split('/').pop();
     return fileName.split('_')[0];

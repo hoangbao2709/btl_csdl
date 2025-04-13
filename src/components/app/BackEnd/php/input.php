@@ -52,7 +52,7 @@ if ($conn->query($sql) === TRUE) {
 foreach ($tables as $table) {
     if (isset($_POST[$table])) {
         $sql = "INSERT INTO " . strtolower($table) . "(id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
-                VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', 'Active', '$company')";
+                VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', '$table', 'Active', '$company')";
 
         if ($conn->query($sql) !== TRUE) {
             $response["success"] = false;
@@ -65,15 +65,15 @@ foreach ($tables as $table) {
 }
 
 $upload_dirs = [
-    'am_thanh' => './images/Am_thanh/' . $id . '/',
-    'dien_thoai_taplet' => './images/Dien_thoai_Taplet/' . $id . '/',
-    'dong_ho_camera' => './images/Do_gia_dung/' . $id . '/',
-    'do_gia_dung' => './images/Dong_ho_Camera/' . $id . '/',
-    'laptop' => './images/Laptop/' . $id . '/',
-    'pc_man_hinh_may_in' => './images/PC_man_hinh_May_in/' . $id . '/',
-    'phu_kien' => './images/Phu_kien/' . $id . '/',
-    'tivi' => './images/Tivi/' . $id . '/',
-    'trang_chu' => './images/Trang_Chu/' . $id . '/'
+    'am_thanh' => './images/am_thanh/' . $id . '/',
+    'dien_thoai_taplet' => './images/dien_thoai_taplet/' . $id . '/',
+    'dong_ho_camera' => './images/dong_ho_camera/' . $id . '/',
+    'do_gia_dung' => './images/do_gia_dung/' . $id . '/',
+    'laptop' => './images/laptop/' . $id . '/',
+    'pc_man_hinh_may_in' => './images/pc_man_hinh_may_in/' . $id . '/',
+    'phu_kien' => './images/phu_kien/' . $id . '/',
+    'tivi' => './images/tivi/' . $id . '/',
+    'trang_chu' => './images/trang_chu/' . $id . '/'
 ];
 
 $countName = 0;

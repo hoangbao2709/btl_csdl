@@ -37,20 +37,24 @@ export default function Product() {
     async function loadAndProcessImages() {
         try {
             let imagePaths = [];
-            if (link === "tat_ca_san_pham") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/tat_ca_san_pham/**/*.{jpg,jpeg,png,gif,svg,webp}');
-            } else if (link === "Kien_thuc_khoa_hoc") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/kien_thuc_khoa_hoc/**/*.{jpg,jpeg,png,gif,svg,webp}');
-            } else if (link === "Lich_su_truyen_thong") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/lich_su_truyen_thong/**/*.{jpg,jpeg,png,gif,svg,webp}');
-            } else if (link === "Truyen_tranh") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/truyen_tranh/**/*.{jpg,jpeg,png,gif,svg,webp}');
-            } else if (link === "Van_hoc_nuoc_ngoai") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/van_hoc_nuoc_ngoai/**/*.{jpg,jpeg,png,gif,svg,webp}');
-            } else if (link === "Van_hoc_Viet_Nam") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/van_hoc_Viet_Nam/**/*.{jpg,jpeg,png,gif,svg,webp}');
-            } else if (link === "Wings_book") {
-                imagePaths = import.meta.glob('./../../BackEnd/php/images/wings_book/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            if (link === "trang_chu") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/trang_chu/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "am_thanh") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/am_thanh/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "dien_thoai_taplet") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/dien_thoai_taplet/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "do_gia_dung") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/do_gia_dung/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "dong_ho_camera") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/dong_ho_camera/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "laptop") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/laptop/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "pc_man_hinh_may_in") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/pc_man_hinh_may_in/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "phu_kien") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/phu_kien/**/*.{jpg,jpeg,png,gif,svg,webp}');
+            } else if (link === "tivi") {
+                imagePaths = import.meta.glob('./../../BackEnd/php/images/tivi/**/*.{jpg,jpeg,png,gif,svg,webp}');
             }
             const imagePromises = Object.values(imagePaths).map(importer => importer());
             const loadedImages = await Promise.all(imagePromises);
@@ -86,7 +90,7 @@ export default function Product() {
         description: 'N/A',
         trong_luong: 0,
     };
-    console.log(data);
+    console.log("image", link);
     const [favourite, setFavourite] = useState(false);
 
     useEffect(() => {
