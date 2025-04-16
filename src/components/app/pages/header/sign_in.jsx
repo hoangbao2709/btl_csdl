@@ -10,8 +10,6 @@ const SigninForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const url = `http://localhost/btl_csdl/src/components/app/BackEnd/php/login.php?&username=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`;
     fetch(`http://localhost/btl_csdl/src/components/app/BackEnd/php/login.php?&username=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`)
     .then((response) => response.json())
     .then((data) => {
@@ -103,7 +101,7 @@ const SigninForm = () => {
               type="submit"
               class="w-full cursor-pointer bg-red-500 hover:bg-red-600 font-bold text-white px-4 py-2 rounded-lg flex items-center justify-center"
             >
-              Đăng ký
+              Đăng Nhập
             </button>
           </form>
           <p className="mt-4 text-center">
