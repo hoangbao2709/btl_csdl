@@ -1,7 +1,31 @@
 import React from "react";
 import Header from "./header";
 import logo from "./../images/chibi2.webp";
+import { useState, useRef, useEffect } from "react";
+import { data } from "jquery";
+
 const SigninForm = () => {
+  const [identifier, setIdentifier] = useState(""); // For phone or email
+  const [password, setPassword] = useState(""); // For password
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const url = `http://localhost/btl_csdl/src/components/app/BackEnd/php/login.php?&username=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`;
+    fetch(`http://localhost/btl_csdl/src/components/app/BackEnd/php/login.php?&username=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.success);
+      alert(data.message);
+      if(data.success){
+        
+      }else{
+
+      }
+    })
+    
+  };
+
   return (
     <div>
       <Header></Header>
@@ -10,10 +34,14 @@ const SigninForm = () => {
           <div className="text-center mb-6">
             <img src={logo} alt="Logo" className="mx-auto mb-4" />
           </div>
-          <form>
+          <form 
+            onSubmit={handleSubmit}
+          >
             <div class="relative">
               <input
                 type="text"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
                 class="peer py-4 px-[10px] block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-sm placeholder:text-transparent focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none
                                 focus:pt-6
                                 focus:pb-2
@@ -41,6 +69,8 @@ const SigninForm = () => {
             <div class="relative">
               <input
                 type="text"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 class="peer py-4 px-[10px] block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-sm placeholder:text-transparent focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none
                                 focus:pt-6
                                 focus:pb-2
@@ -69,12 +99,12 @@ const SigninForm = () => {
             <div className="h-[40px] w-full flex justify-end items-center">
               <a href="">Quên mật khẩu?</a>
             </div>
-            <div
+            <button
               type="submit"
               class="w-full cursor-pointer bg-red-500 hover:bg-red-600 font-bold text-white px-4 py-2 rounded-lg flex items-center justify-center"
             >
               Đăng ký
-            </div>
+            </button>
           </form>
           <p className="mt-4 text-center">
             Bạn chưa có tài khoản?{" "}

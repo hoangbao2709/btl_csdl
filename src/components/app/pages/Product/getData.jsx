@@ -46,7 +46,6 @@ export function useData(img = [], url, variable) {
           page: data[0].Page,
           description: data[0].description,
         };
-        console.log("tempItem", tempItem);
         items.push(tempItem);
         tempImg = [];
       }

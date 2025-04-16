@@ -30,7 +30,6 @@ export default function Product() {
     const chillSwiperRef = useRef(null);
     const [from, setFrom] = useState(0);
     const [to, setTo] = useState(3);
-
     const [img, setImages] = useState([]);
     let image = [];
 

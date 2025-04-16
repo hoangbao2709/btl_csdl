@@ -16,13 +16,14 @@ if ($id === null) {
 }
 
 $tables = [
-    "tat_ca_san_pham",
-    "kien_thuc_khoa_hoc",
-    "lich_su_truyen_thong",
-    "truyen_tranh",
-    "van_hoc_nuoc_ngoai",
-    "van_hoc_Viet_Nam",
-    "wings_book",
+    "am_thanh",
+    "dien_thoai_taplet",
+    "dong_ho_camera",
+    "do_gia_dung",
+    "laptop",
+    "pc_man_hinh_may_in",
+    "phu_kien",
+    "tivi",
 ];
 
 function deleteDirectory($dir) {

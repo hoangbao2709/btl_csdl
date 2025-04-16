@@ -17,7 +17,7 @@ if ($url === null) {
     exit;
 }
 
-$sql = "SELECT * FROM tat_ca_san_pham WHERE id = :id";
+$sql = "SELECT * FROM trang_chu WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id', $url, PDO::PARAM_STR); 
 $stmt->execute();
@@ -45,8 +45,8 @@ if ($existingProduct) {
 
     $updateStmt->execute();
 } else {
-    $insertSql = "INSERT INTO store (id, name, gia_goc, gia, giam_gia, tap, tac_gia, doi_tuong, khuon_kho, so_trang, trong_luong, Page, Status, so_luong) 
-                   VALUES (:id, :name, :gia_goc, :gia, :giam_gia, :tap, :tac_gia, :doi_tuong, :khuon_kho, :so_trang, :trong_luong, 'tat_ca_san_pham', 'Active', :sl)";
+    $insertSql = "INSERT INTO store (id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company, so_luong) 
+                  VALUES (:id, :name, :gia_goc, :gia, :giam_gia, :description, :trong_luong, 'trang_chu', 'Active', :company, :sl)";
 
     $insertStmt = $conn->prepare($insertSql);
 
@@ -55,13 +55,10 @@ if ($existingProduct) {
     $insertStmt->bindParam(':gia_goc', $product['gia_goc'], PDO::PARAM_STR);
     $insertStmt->bindParam(':gia', $product['gia'], PDO::PARAM_STR);
     $insertStmt->bindParam(':giam_gia', $product['giam_gia'], PDO::PARAM_STR);
-    $insertStmt->bindParam(':tap', $product['tap'], PDO::PARAM_STR);
-    $insertStmt->bindParam(':tac_gia', $product['tac_gia'], PDO::PARAM_STR);
-    $insertStmt->bindParam(':doi_tuong', $product['doi_tuong'], PDO::PARAM_STR);
-    $insertStmt->bindParam(':khuon_kho', $product['khuon_kho'], PDO::PARAM_STR);
-    $insertStmt->bindParam(':so_trang', $product['so_trang'], PDO::PARAM_STR);
+    $insertStmt->bindParam(':description', $product['description'], PDO::PARAM_STR);
     $insertStmt->bindParam(':trong_luong', $product['trong_luong'], PDO::PARAM_STR);
-    $insertStmt->bindParam(':sl', $sl, PDO::PARAM_STR);
+    $insertStmt->bindParam(':company', $product['company'], PDO::PARAM_STR);
+    $insertStmt->bindParam(':sl', $sl, PDO::PARAM_INT);
 
     $insertStmt->execute();
 }

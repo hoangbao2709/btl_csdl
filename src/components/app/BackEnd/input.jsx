@@ -155,7 +155,6 @@ export default function Input() {
       success(data) {
         if (data.success) {
           setID(id + 1);
-          // alert(data.message);
         } else {
           alert(data.message);
         }

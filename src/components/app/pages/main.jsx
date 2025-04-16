@@ -19,6 +19,7 @@ const Main = () => {
   const pathParts = location.pathname;
   const headerRef = useRef(null);
 
+
   let resultLocation = "";
 
   if (location.pathname !== '/') {
