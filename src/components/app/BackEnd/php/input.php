@@ -13,7 +13,7 @@ header('Access-Control-Allow-Origin: http://localhost:3000');
 header('Content-Type: application/json; charset=utf-8');
 $conn->set_charset("utf8");
 
-$id = mysqli_real_escape_string($conn, $_POST["id"]);
+$inventory = mysqli_real_escape_string($conn, $_POST["inventory"]);
 $name = mysqli_real_escape_string($conn, $_POST["name"]);
 $gia_goc = mysqli_real_escape_string($conn, $_POST["gia_goc"]);
 $giam_gia = mysqli_real_escape_string($conn, $_POST["giam_gia"]);
@@ -34,8 +34,8 @@ $tables = [
     "tivi",
 ];
 
-$sql = "INSERT INTO trang_chu (id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
-        VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', 'Active', '$company')";
+$sql = "INSERT INTO trang_chu (inventory, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
+        VALUES ('$inventory', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', 'Active', '$company')";
 
 $response = [];
 if ($conn->query($sql) === TRUE) {
@@ -51,8 +51,8 @@ if ($conn->query($sql) === TRUE) {
 
 foreach ($tables as $table) {
     if (isset($_POST[$table])) {
-        $sql = "INSERT INTO " . strtolower($table) . "(id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
-                VALUES ('$id', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', '$table', 'Active', '$company')";
+        $sql = "INSERT INTO " . strtolower($table) . "(inventory, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
+                VALUES ('$inventory', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', '$table', 'Active', '$company')";
 
         if ($conn->query($sql) !== TRUE) {
             $response["success"] = false;

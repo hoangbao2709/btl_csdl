@@ -62,7 +62,7 @@ export default function Navbar() {
     const navigate = useNavigate();
     return (
         <div className="bg-[#161A23] z-50 h-screen">
-            <div className={` ${open ? "w-[240px]" : ""}  bg-[#161A23] font-sans`}>
+            <div className={` ${open ? "w-[300px]" : ""}  bg-[#161A23] font-sans`}>
                 <header className="relative">
                     <div className="flex mt-[20px] justify-center ">
                         <img className={`h-[50px] ${open ? "mr-7" : ""} w-[50px] object-cover" `} src={avt}></img>
@@ -87,7 +87,7 @@ export default function Navbar() {
                         <div className="w-[80%] my-[20px] border-b-[5px] border-[#2D2F39] rounded-full"></div>
                     </div>
                 </header>
-                <div ref={divRef1} className="flex pr-4">
+                <div ref={divRef1} className="flex pr-6">
                     <div className={`container mx-auto ${open ? "w-[110px]" : ""} text-white `}>
                         <ul className="border-r-4 border-[#8A8C91] rounded-[50%]">
                             <li>

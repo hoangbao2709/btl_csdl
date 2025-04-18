@@ -147,10 +147,9 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
     
         const paddedItems = [...itemsToRender, ...Array(Math.max(0, max_index - itemsToRender.length)).fill({})];
         console.log(paddedItems);
-    
-        return data.slice(index, index + max_index).map((element, idx) => (
-            <ul className={`flex text-[20px] h-[40px] w-full py-2 ${idx % 2 === 0 ? "bg-[#E0E3E7]" : ""}`} key={element.id || ""}>
-                <li className="w-[2%] px-[2%]">
+        return paddedItems.map((element, idx) => (
+            <ul className={`flex text-[20px] h-[50px] w-full ${idx % 2 === 0 ? "bg-[#E0E3E7]" : ""}`} key={element.id || ""}>
+                <li className="w-[4%] flex items-center justify-center">
                     <input
                         type={type}
                         className={`size-4 rounded-[50%] cursor-pointer ${element.id ? "" : "hidden"}`}
@@ -161,12 +160,13 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
                         name="isRadio"
                     />
                 </li>
-                <li className="w-[5%] px-[2%]">{element.id || ""}</li>
-                <li className="w-[30%] px-[2%] overflow-hidden">{element.name || ""}</li>
-                <li className={`w-[13%] ${element.id ? "" : "hidden"}`}>{formatPrice(element.gia_goc || "")}</li>
-                <li className={`w-[10%] px-[1.5%] ${element.id ? "" : "hidden"}`}>{formatPrice(element.gia || "")}</li>
+                <li className="w-[5%] flex items-center justify-center">{element.id || ""}</li>
+                <li className="w-[30%] flex items-center justify-center overflow-hidden">{element.name || ""}</li>
+                <li className={`w-[13%] flex items-center justify-center ${element.id ? "" : "hidden"}`}>{formatPrice(element.gia_goc || "")}</li>
+                <li className={`w-[10%] flex items-center justify-center ${element.id ? "" : "hidden"}`}>{formatPrice(element.gia || "")}</li>
                 <li className="w-[10%] flex items-center justify-center">{element.giam_gia || ""}</li>
-                <li className={`checkbox-wrapper-8 w-[9%] cursor-pointer ml-[3%] rounded-lg flex items-center justify-center ${element.id ? "" : "hidden"}`}>
+                <li className="w-[10%] flex items-center justify-center">{element.inventory || ""}</li>
+                <li className={`checkbox-wrapper-8 w-[10%] cursor-pointer rounded-lg flex items-center justify-center ${element.id ? "" : "hidden"}`}>
                     <input
                         className="tgl tgl-skewed"
                         onClick={() => handleStatusChange(element.id || "")}
@@ -176,7 +176,7 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
                     />
                     <label className="tgl-btn" data-tg-off="Inactive" data-tg-on="Active" htmlFor={`checkbox-${idx}`}></label>
                 </li>
-                <li className={`w-[10%] pl-[7.5%] flex items-center justify-center cursor-pointer ${element.id ? "" : "hidden"}`} onClick={() => toggleModal(idx)}>
+                <li className={`w-[10%] flex items-center justify-center cursor-pointer ${element.id ? "" : "hidden"}`} onClick={() => toggleModal(idx)}>
                     <FontAwesomeIcon className="size-7" icon={faBars} />
                 </li>
                 {open[idx] && element.id && (
@@ -191,6 +191,7 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
             </ul>
         ));
     }
+
 
     const countStatus = results.reduce((accumulator, item) => {
         if (item.Status === "Active") {

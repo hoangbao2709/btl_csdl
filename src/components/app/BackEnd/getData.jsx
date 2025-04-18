@@ -12,5 +12,6 @@ export function Data(url, variable) {
         console.error("Error fetching data:", error);
       });
   }, [url, variable]); 
+  // console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getdata.php?&url=${encodeURIComponent(url)}&variable=${encodeURIComponent(variable)}`);
   return data;
 }

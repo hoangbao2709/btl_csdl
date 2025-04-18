@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2025 at 07:17 AM
+-- Generation Time: Apr 18, 2025 at 10:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`name`, `phone`, `email`, `birthdate`, `password`, `isStudent`) VALUES
-('123', '123', 'hoangbao270904@gmail.com', '2025-04-10', '$2y$10$q3UDETcFvWW8SRHvPZf.hON/jEPa3YXGpO5xfvqegniiozJlY/Cc6', 'on');
+('123', '123', '123@gmail.com', '2025-04-11', '$2y$10$3SgvojNsrliv.yVbsy6LtOIaGpxZ3RlE.41Wy9qOsec1pSlK3aN0i', 'on');
 
 -- --------------------------------------------------------
 
@@ -55,6 +55,7 @@ CREATE TABLE `am_thanh` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
@@ -66,8 +67,17 @@ CREATE TABLE `am_thanh` (
 -- Dumping data for table `am_thanh`
 --
 
-INSERT INTO `am_thanh` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(2, 'bao123', '1000000123', '-100230012328', '10123', '10000123', '10000123', 'am_thanh', 'Active', 'apple123');
+INSERT INTO `am_thanh` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(1, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
+(2, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
+(3, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
+(4, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
+(8, '123', '231', '177', '23', 23, '123', '1231', 'am_thanh', 'Active', '1231'),
+(9, '123', '231', '177', '23', 23, '123', '1231', 'am_thanh', 'Active', '1231'),
+(10, '123', '231', '177', '23', 23, '123', '1231', 'am_thanh', 'Active', '1231'),
+(11, '123', '123', '-28', '123', 23, '123', '123', 'am_thanh', 'Active', '1231'),
+(12, '123', '123', '-28', '123', 23, '123', '123', 'am_thanh', 'Active', '1231'),
+(13, '123', '123', '-28', '123', 23, '123', '123', 'am_thanh', 'Active', '1231');
 
 -- --------------------------------------------------------
 
@@ -81,19 +91,13 @@ CREATE TABLE `dien_thoai_taplet` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `dien_thoai_taplet`
---
-
-INSERT INTO `dien_thoai_taplet` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(6, '123', '123', '-28', '123', '123', '123', 'dien_thoai_taplet', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -107,22 +111,13 @@ CREATE TABLE `dong_ho_camera` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `dong_ho_camera`
---
-
-INSERT INTO `dong_ho_camera` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(3, '123', '123', '-28', '123', '123', '1231', 'trang_chu', 'Active', '123'),
-(4, '123', '123', '-28', '123', '123', '123', 'dong_ho_camera', 'Active', '123'),
-(5, '123', '123', '-28', '123', '123', '1231', 'trang_chu', 'Active', '123'),
-(6, '123', '123', '-28', '123', '123', '1231', 'trang_chu', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -136,19 +131,13 @@ CREATE TABLE `do_gia_dung` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `do_gia_dung`
---
-
-INSERT INTO `do_gia_dung` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(5, '123', '123', '-28', '123', '123', '123', 'do_gia_dung', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -162,20 +151,13 @@ CREATE TABLE `favorite` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `favorite`
---
-
-INSERT INTO `favorite` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(5, '123', '123', '-28', '123', '123', '123', 'do_gia_dung', 'Active', '123'),
-(6, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -189,23 +171,13 @@ CREATE TABLE `laptop` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `laptop`
---
-
-INSERT INTO `laptop` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(21, '123', '123', '-28', '123', '123', '123', 'laptop', 'Active', '123'),
-(22, '123', '123', '-28', '123', '123', '123', 'laptop', 'Active', '123'),
-(23, '123', '123', '-28', '123', '123', '123', 'laptop', 'Active', '123'),
-(24, '123', '123', '-28', '123', '123', '123', 'laptop', 'Active', '123'),
-(25, '123', '123', '-28', '123', '123', '123', 'laptop', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -219,21 +191,13 @@ CREATE TABLE `pc_man_hinh_may_in` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `pc_man_hinh_may_in`
---
-
-INSERT INTO `pc_man_hinh_may_in` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(7, '123', '123', '-28', '123', '123', '123', 'pc_man_hinh_may_in', 'Active', '123'),
-(8, '123', '123', '-28', '123', '123', '123', 'pc_man_hinh_may_in', 'Active', '123'),
-(9, '123', '123', '-28', '123', '123', '123', 'pc_man_hinh_may_in', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -247,23 +211,13 @@ CREATE TABLE `phu_kien` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `phu_kien`
---
-
-INSERT INTO `phu_kien` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(10, '123', '123', '-28', '123', '123', '123', 'phu_kien', 'Active', '123'),
-(11, '123', '123', '-28', '123', '123', '123', 'phu_kien', 'Active', '123'),
-(12, '123', '123', '-28', '123', '123', '123', 'phu_kien', 'Active', '123'),
-(13, '123', '123', '-28', '123', '123', '123', 'phu_kien', 'Active', '123'),
-(14, '123', '123', '-28', '123', '123', '123', 'phu_kien', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -285,14 +239,6 @@ CREATE TABLE `store` (
   `so_luong` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `store`
---
-
-INSERT INTO `store` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`, `so_luong`) VALUES
-(5, '123', '123', '-28', '123', '123', '123', 'do_gia_dung', 'Active', '123', 0),
-(6, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -305,24 +251,13 @@ CREATE TABLE `tivi` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
   `Status` varchar(500) NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tivi`
---
-
-INSERT INTO `tivi` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(15, '123', '123', '-28', '123', '123', '123', 'tivi', 'Active', '123'),
-(16, '123', '123', '-28', '123', '123', '123', 'tivi', 'Active', '123'),
-(17, '123', '123', '-28', '123', '123', '123', 'tivi', 'Active', '123'),
-(18, '123', '123', '-28', '123', '123', '123', 'tivi', 'Active', '123'),
-(19, '123', '123', '-28', '123', '123', '123', 'tivi', 'Active', '123'),
-(20, '123', '123', '-28', '123', '123', '123', 'tivi', 'Active', '123');
 
 -- --------------------------------------------------------
 
@@ -336,6 +271,7 @@ CREATE TABLE `trang_chu` (
   `gia_goc` varchar(500) NOT NULL,
   `gia` varchar(500) NOT NULL,
   `giam_gia` varchar(500) NOT NULL,
+  `inventory` int(255) NOT NULL,
   `description` varchar(500) NOT NULL,
   `trong_luong` varchar(500) NOT NULL,
   `Page` varchar(500) NOT NULL,
@@ -347,32 +283,17 @@ CREATE TABLE `trang_chu` (
 -- Dumping data for table `trang_chu`
 --
 
-INSERT INTO `trang_chu` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(1, 'bao', '1000000', '900000', '10', '10000', '10000', 'trang_chu', 'Active', 'apple'),
-(2, 'bao123', '1000000123', '-100230012328', '10123', '10000123', '10000123', 'trang_chu', 'Active', 'apple123'),
-(3, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(4, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(5, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(6, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(7, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(8, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(9, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(10, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(11, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(12, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(13, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(14, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(15, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(16, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(17, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(18, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(19, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(20, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(21, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(22, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(23, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(24, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123'),
-(25, '123', '123', '-28', '123', '123', '123', 'trang_chu', 'Active', '123');
+INSERT INTO `trang_chu` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(1, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
+(2, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
+(3, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
+(4, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
+(26, '123', '231', '177', '23', 23, '123', '1231', 'trang_chu', 'Active', '1231'),
+(27, '123', '231', '177', '23', 23, '123', '1231', 'trang_chu', 'Active', '1231'),
+(28, '123', '231', '177', '23', 23, '123', '1231', 'trang_chu', 'Active', '1231'),
+(29, '123', '123', '-28', '123', 23, '123', '123', 'trang_chu', 'Active', '1231'),
+(30, '123', '123', '-28', '123', 23, '123', '123', 'trang_chu', 'Active', '1231'),
+(31, '123', '123', '-28', '123', 23, '123', '123', 'trang_chu', 'Active', '1231');
 
 --
 -- Indexes for dumped tables
@@ -459,7 +380,7 @@ ALTER TABLE `trang_chu`
 -- AUTO_INCREMENT for table `am_thanh`
 --
 ALTER TABLE `am_thanh`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `dien_thoai_taplet`
@@ -519,7 +440,7 @@ ALTER TABLE `tivi`
 -- AUTO_INCREMENT for table `trang_chu`
 --
 ALTER TABLE `trang_chu`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

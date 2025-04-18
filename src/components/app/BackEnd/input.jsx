@@ -46,20 +46,16 @@ export default function Input() {
   const [submittedCompany, setSubmittedCompany] = useState("");
   const [submittedTrong_luong, setSubmittedTrong_luong] = useState("");
   const [submittedDescription, setSubmittedDescription] = useState("");
+  const [submittedInventory, setSubmittedInventory] = useState("");
+
   let data = null;
   const chillSwiperRef = useRef(null);
   const [from, setFrom] = useState(0);
   const [to, setTo] = useState(3);
   const swiperRef = useRef(null);
   const [index, setIndex] = useState(0);
-  const [id, setID] = useState();
 
   data = Data("trang_chu", "All");
-  useEffect(() => {
-    if (data) {
-      setID(data.length > 0 ? data[data.length - 1].id + 1 : 1);
-    }
-  }, [data]);
 
   const rating = 4;
   const [final, setFullfinal] = useState({
@@ -121,7 +117,7 @@ export default function Input() {
     if (name === "giam_gia") setSubmittedGiam_gia(value);
     if (name === "trong_luong") setSubmittedTrong_luong(value + " gram");
     if (name === "description") setSubmittedDescription(value);
-
+    if (name === "inventory") setSubmittedInventory(value);
     if (type === "checkbox") {
       setFullitem((prev) => ({
         ...prev,
@@ -267,37 +263,6 @@ export default function Input() {
             <div class="max-w-sm mb-[10px]">
               <div class="relative">
                 <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    defaultValue={id}
-                    onChange={handleChange}
-                    class="peer py-4 px-[10px] block w-full bg-transparent  border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-sm placeholder:text-transparent  focus:ring-0 disabled:opacity-50 disabled:pointer-events-none
-                            focus:pt-6
-                            focus:pb-2
-                            not-placeholder-shown:pt-6
-                            not-placeholder-shown:pb-2
-                            autofill:pt-6
-                            autofill:pb-2"
-                    placeholder="ID"
-                />
-                <label
-                    for="hs-floating-underline-input-email"
-                    class="absolute top-0 start-0 py-4 px-0 h-full border border-transparent sm:text-sm truncate pointer-events-none transition ease-in-out duration-100 origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
-                        peer-focus:scale-90
-                        peer-focus:translate-x-0.5
-                        peer-focus:-translate-y-1.5
-                        peer-focus:text-gray-500
-                        peer-not-placeholder-shown:scale-90
-                        peer-not-placeholder-shown:translate-x-0.5
-                        peer-not-placeholder-shown:-translate-y-1.5
-                        peer-not-placeholder-shown:text-gray-500"
-                >
-                  ID
-                </label>
-              </div>
-              <div class="relative">
-                <input
                   type="text"
                   id="name"
                   name="name"
@@ -354,6 +319,36 @@ export default function Input() {
                                 peer-not-placeholder-shown:text-gray-500"
                 >
                   Company 
+                </label>
+              </div>
+              <div class="relative">
+                <input
+                  type="text"
+                  id="inventory"
+                  name="inventory"
+                  onChange={handleChange}
+                  class="peer py-4 px-[10px] block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-sm placeholder:text-transparent focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none
+                                focus:pt-6
+                                focus:pb-2
+                                not-placeholder-shown:pt-6
+                                not-placeholder-shown:pb-2
+                                autofill:pt-6
+                                autofill:pb-2"
+                  placeholder="inventory"
+                />
+                <label
+                  for="hs-floating-underline-input-email"
+                  class="absolute top-0 start-0 py-4 px-0 h-full sm:text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent  origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
+                                peer-focus:scale-90
+                                peer-focus:translate-x-0.5
+                                peer-focus:-translate-y-1.5
+                                peer-focus:text-gray-500
+                                peer-not-placeholder-shown:scale-90
+                                peer-not-placeholder-shown:translate-x-0.5
+                                peer-not-placeholder-shown:-translate-y-1.5
+                                peer-not-placeholder-shown:text-gray-500"
+                >
+                  Inventory 
                 </label>
               </div>
             </div>
