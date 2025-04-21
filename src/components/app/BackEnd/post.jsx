@@ -238,6 +238,7 @@ export default function Post() {
     };
 
     function getHTML() {
+        console.log(data.length);
         if (Array.isArray(data) && data.length > 0) {
             return (
                 <PaginationHelper
@@ -278,11 +279,14 @@ export default function Post() {
         } else if (Use === "Edit") {
             navigateTo(Link);
         } else if (Use === "Delete") {
+            
             for (let index = 0; index < checkedItems.length; index++) {
+                
                 if (checkedItems[index] === true) {
+                    console.log(data[index].id);
                     try {
-                        const response = fetch(`https://localhost/book_store_web/src/components/app/BackEnd/php/uploads/delete.php?&id=${encodeURIComponent(data[index].id)}`);
-                        const result = response.json();
+                        const response = fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/delete.php?&id=${encodeURIComponent(data[index].id)}`);
+                        
                     } catch (error) {
                         console.error("Error deleting item:", error);
                     }
@@ -399,10 +403,10 @@ export default function Post() {
                         <li className="w-[10%] flex items-center justify-center">Status</li>
                         <li className="w-[10%] flex items-center justify-center" >Thêm</li>
                     </ul>
-                    {results.length > 0 ? SecrchResult : result}
+                    {results.length > 0 ? SecrchResult : getHTML()}
                 </div>
             </div>
-
+            {/* {result} */}
         </form>
     );
 }

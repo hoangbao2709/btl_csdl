@@ -65,10 +65,11 @@ export default function Header(item) {
     const resultsRef2 = useRef();
     const [images, setImages] = useState([]);
     const [open, setOpen] = useState(false);
+    const [ID, setID] = useState("");
 
     useEffect(() => {
       async function loadImages() {
-        const imagePaths = import.meta.glob('../../BackEnd/php/images/tat_ca_san_pham/**/*.{jpg,jpeg,png,gif,svg,webp}');
+        const imagePaths = import.meta.glob('../../BackEnd/php/images/trang_chu/**/*.{jpg,jpeg,png,gif,svg,webp}');
         const imagePromises = Object.values(imagePaths).map(importer => importer());
         const loadedImages = await Promise.all(imagePromises);
         setImages(loadedImages.map(module => module.default));
@@ -110,16 +111,23 @@ export default function Header(item) {
         return result;
     };
 
+    useEffect(() => {
+        const storedData = sessionStorage.getItem('user_id');
+        if (storedData) {
+            setID(storedData);
+        }
+    }, []);
+
     imageFavorite = getImgFavourite(images);
     imageStore = getImgStore(images);
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getAllFavorite.php`);
+            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getAllFavorite.php?phone=${encodeURIComponent(ID)}`);
             const data = await response.json();
             setFavourite(data);
           } catch (error) {
-            console.error("Error fetching favorite status:", error);
+            // console.error("Error fetching favorite status:", error);
           }
         };
         fetchData();
@@ -128,7 +136,7 @@ export default function Header(item) {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getAllStore.php`);
+            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getAllStore.php?phone=${encodeURIComponent(ID)}`);
             const data = await response.json();
             setStore(data);
           } catch (error) {
@@ -157,8 +165,9 @@ export default function Header(item) {
 
     useEffect(() => {
         const indexFavorite = clickFavorite.findIndex(value => value === true);
+        console.log(indexFavorite);
         if (indexFavorite !== -1) {
-            fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(indexFavorite)}`)
+            fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(indexFavorite)}&phone=${encodeURIComponent(ID)}`)
                 .then(response => response.json()) 
                 .catch(error => console.error('Error fetching data:', error));
                 setClickFavorite(prevCheckedItems => {
@@ -169,7 +178,7 @@ export default function Header(item) {
         }
         const indexStore = clickStore.findIndex(value => value === true);
         if (indexStore !== -1) {
-            fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteStore.php?id=${encodeURIComponent(indexStore)}`)
+            fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteStore.php?id=${encodeURIComponent(indexStore)}&phone=${encodeURIComponent(ID)}`)
                 .then(response => response.json()) 
                 .catch(error => console.error('Error fetching data:', error));
                 setClickStore(prevCheckedItems => {
@@ -214,15 +223,17 @@ export default function Header(item) {
             >
                 {favourite.length > 0 && favourite.map((element, index) => (
                     <SwiperSlide className="m-0" key={index}> 
-                        <a className="fit object-cover flex items-center" href={`/Product/tat_ca_san_pham/${element.id}`}>
-                            <img className="h-[100px]" src={imageFavorite[index]}></img>
-                            <div className="ml-2 w-[160px]">
-                                <p className="text-[14px]">{element.name}</p>
-                                <p className="text-[14px]">Tập: {element.tap}</p>
-                                <p className="text-[14px]">Giá sản phẩm: {formatPrice(element.gia)}</p>
-                            </div>
+                        <div className="fit object-cover flex items-center">
+                            <a className="fit object-cover flex items-center" href={`/Product/${element.Page}/${element.id}`}>
+                                <img className="h-[100px]" src={imageFavorite[index]}></img>
+                                <div className="ml-2 w-[160px]">
+                                    <p className="text-[14px]">{element.name}</p>
+                                    <p className="text-[14px]">Tập: {element.tap}</p>
+                                    <p className="text-[14px]">Giá sản phẩm: {formatPrice(element.gia)}</p>
+                                </div>
+                            </a>
                             <div className="text-[red] cursor-pointer" onClick={() => {handleClickFavorite(element.id)}}>x</div>
-                        </a>
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -303,17 +314,33 @@ export default function Header(item) {
     return (
         <div className="z-100">
             <Modal open={open} onClose={() => setOpen(false)}>
-            <div className="h-[300px] w-[330px] bg-white shadow-lg rounded-2xl">
-                <p className="w-full flex items-center justify-center text-[red] font-bold text-[40px]">Smember</p>
-                <div className="w-full flex items-center justify-center">
-                    <img src={chibi} alt="" />
+                <div className="h-[300px] w-[330px] bg-white shadow-lg rounded-2xl">
+                    <p className="w-full flex items-center justify-center text-[red] font-bold text-[40px]">Smember</p>
+                    <div className="w-full flex items-center justify-center">
+                        <img src={chibi} alt="" />
+                    </div>
+                    {!ID && 
+                        <div>
+                            <p className="text-black text-center ">Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn.</p>
+                            <div className="flex h-[102px] w-full items-center justify-center">
+                                <a href="/sign_up" className="cursor-pointer transition-transform transform hover:scale-105 w-[44%] mx-[3%] text-[20px] font-bold text-[red] flex items-center justify-center py-[10px] border-3 rounded-lg border-[red]">Đăng ký</a>
+                                <a href="/sign_in" className="cursor-pointer transition-transform transform hover:scale-105 w-[44%] mx-[3%] text-[20px] font-bold text-[white] flex items-center justify-center py-[10px] border-3 bg-[red] rounded-lg border-[red]">Đăng nhập</a>
+                            </div>
+                        </div>
+                    }
+                    {ID && 
+                        <div>
+                            <p className="text-black text-center ">Bạn có muốn đăng xuất ?</p>
+                            <div className="flex h-[102px] w-full items-center justify-center">
+                                <div onClick={()=>{
+                                    sessionStorage.clear(),
+                                    setID(""),
+                                    window.location.reload()
+                                }} className="cursor-pointer bg-[red] transition-transform transform hover:scale-105 w-full mx-[3%] text-[20px] font-bold text-[white] flex items-center justify-center py-[10px] border-3 rounded-lg border-[red]">Đăng xuất</div>
+                            </div>
+                        </div>
+                    }
                 </div>
-                <p className="text-black text-center ">Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn.</p>
-                <div className="flex h-[102px] w-full items-center justify-center">
-                    <a href="/sign_up" className="cursor-pointer transition-transform transform hover:scale-105 w-[44%] mx-[3%] text-[20px] font-bold text-[red] flex items-center justify-center py-[10px] border-3 rounded-lg border-[red]">Đăng ký</a>
-                    <a href="/sign_in" className="cursor-pointer transition-transform transform hover:scale-105 w-[44%] mx-[3%] text-[20px] font-bold text-[white] flex items-center justify-center py-[10px] border-3 bg-[red] rounded-lg border-[red]">Đăng nhập</a>
-                </div>
-            </div>
             </Modal>
             <header id="yourElementId" className={`fixed z-50 w-full top-0 left-0 transition-transform duration-700 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
                 <div className="flex z-50 h-[40px] pl-[100px] bg-[#E9EFFF] items-center">
@@ -334,7 +361,7 @@ export default function Header(item) {
                 </Swiper>
                 </div>
                 <div className="flex z-50 pl-[100px] bg-[#D70018] items-center">
-                    <a href="Trang_Chu" className="cursor-pointer logo flex items-center">
+                    <a href="/main/Trang_Chu" className="cursor-pointer logo flex items-center">
                         <img src={logoDark} className="h-[50px] my-[10px] mr-[50px]" alt="Logo" />
                     </a>
                     <ul className={`absolute z-100 block w-[45%] right-[500px]`}>
@@ -362,7 +389,7 @@ export default function Header(item) {
                             <p className="absolute top-[-10px] h-[25px] w-[25px] flex items-center justify-center rounded-[50%] bg-[red] right-0 text-white text-[15px]">{store.length || 0}</p>
                             {listStore && ListStore()}
                         </li>
-                        <li onClick={() => setOpen(true)} className="text-[30px] px-[20px] hover:text-[red] cursor-pointer mx-[5px] rounded-lg hover:bg-[#EEFFF7]">
+                        <li onClick={() => {setOpen(!open);}} className="text-[30px] relative px-[20px] hover:text-[red] cursor-pointer mx-[5px] rounded-lg hover:bg-[#EEFFF7]">
                             <FontAwesomeIcon icon={faUser} />
                         </li>
                     </ul>

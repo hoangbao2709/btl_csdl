@@ -32,6 +32,8 @@ export default function Dien_thoai_Taplet(item) {
     itemNumber = "1";
   } else itemNumber = String(pageNumber);
 
+  console.log(images);
+
   return (
     <div>
       <div className="flex relative">

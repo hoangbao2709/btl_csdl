@@ -32,6 +32,14 @@ export default function Product() {
     const [to, setTo] = useState(3);
     const [img, setImages] = useState([]);
     let image = [];
+    const [ID, setID] = useState("");
+
+    useEffect(() => {
+        const storedData = sessionStorage.getItem('user_id');
+        if (storedData) {
+            setID(storedData);
+        }
+    }, []);
 
     async function loadAndProcessImages() {
         try {
@@ -95,7 +103,7 @@ export default function Product() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getFavorite.php?id=${encodeURIComponent(element.id)}`);
+            const response = await fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getFavorite.php?id=${encodeURIComponent(element.id)}&phone=${encodeURIComponent(ID)}`);
             const data = await response.json();
             setFavourite(data.length > 0);
           } catch (error) {
@@ -167,8 +175,8 @@ export default function Product() {
 
     useEffect(() => {
         favourite ?
-        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/favorite.php?id=${encodeURIComponent(element.id)}`)
-        : fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(element.id)}`)
+        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/favorite.php?id=${encodeURIComponent(element.id)}&phone=${encodeURIComponent(ID)}`)
+        : fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/deleteFavorite.php?id=${encodeURIComponent(element.id)}&phone=${encodeURIComponent(ID)}`)
     }, [favourite]); 
 
     function handleFavorite(){
@@ -176,7 +184,7 @@ export default function Product() {
     }
 
     function addToStore(){
-        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/store.php?&id=${encodeURIComponent(element.id)}&sl=${soLuong}`)
+        fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/store.php?&id=${encodeURIComponent(element.id)}&sl=${soLuong}&phone=${encodeURIComponent(ID)}`);
     }
 
     function formatPrice(price) {
@@ -297,7 +305,7 @@ export default function Product() {
                                     <label className="sm:text-[30px] max-sm:text-[20px]">Trọng lượng: <strong className="text-[red]">{formatGram(element.trong_luong)} gram</strong></label>
                                 </li>
                             </div>
-                            <div className="left-[72%] top-[130px] xl:absolute lg:block lg:mt-[20px] max-lg:block max-lg:w-[100%] ">
+                            <div className="left-[72%] top-[200px] xl:absolute lg:block lg:mt-[20px] max-lg:block max-lg:w-[100%] ">
                                 <p className="sm:text-[30px] max-sm:text-[20px]">Số lượng</p>
                                 <ul className="flex border border-[#8A8C91] xl:w-[200px] lg:w-[100%] h-[50px] mt-[20px] max-lg:w-[100%]">
                                     <li className="w-[25%] flex items-center justify-center border border-[#8A8C91] cursor-pointer" onClick={HandleMinus}>

@@ -85,25 +85,31 @@ export default function Search(item) {
     const [index, setIndex] = useState(0);
     const resultsRef = useRef();
     const resultsRef1 = useRef();
+    
 
-    const categories = [
+    let categories = [
         "Tất cả sản phẩm",
-        "Lịch sử truyền thống",
-        "Văn học Việt Nam",
-        "Văn học nước ngoài",
-        "Kiến thức, khoa học",
-        "Truyện tranh",
-        "Wings Books"
+        "Điện thoại, Tablet",
+        "Laptop",
+        "Âm thanh, Mic thu âm",
+        "Đồng hồ, Camera",
+        "Đồ gia dụng",
+        "Phụ kiện",
+        "PC, màn hình, Máy in",
+        "Tivi",
     ];
 
+
     let linkCategory = [
-        "tat_ca_san_pham",
-        "lich_su_truyen_thong",
-        "van_hoc_Viet_Nam",
-        "van_hoc_nuoc_ngoai",
-        "kien_thuc_khoa_hoc",
-        "truyen_tranh",
-        "wings_book",
+        "Trang_chu",
+        "Dien_thoai_Taplet",
+        "Laptop",
+        "Am_thanh",
+        "Dong_ho_Camera",
+        "Do_gia_dung",
+        "Phu_kien",
+        "PC_man_hinh_May_in",
+        "Tivi",
     ];
     
     const data = Data(linkCategory[index]);

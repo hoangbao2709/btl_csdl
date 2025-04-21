@@ -16,6 +16,7 @@ if ($id === null) {
 }
 
 $tables = [
+    "trang_chu",
     "am_thanh",
     "dien_thoai_taplet",
     "dong_ho_camera",

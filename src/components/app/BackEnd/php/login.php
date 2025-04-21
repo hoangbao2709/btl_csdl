@@ -7,25 +7,31 @@ ini_set('display_errors', 1);
 include './uploads/Dbconnect.php';
 $objDb = new DbConnect();
 $conn = $objDb->connect();
+session_start();
 
-// Retrieve username and password from GET parameters
-$username = isset($_GET['username']) ? $_GET['username'] : null;
+$username = isset($_GET['username']) ? trim($_GET['username']) : null;
 $password = isset($_GET['password']) ? $_GET['password'] : null;
-
+$response = [];
 if ($username && $password) {
-    // Prepare and execute the SQL query to fetch the hashed password
-    $sql = "SELECT password FROM account WHERE email = :username OR phone = :username";
+    $sql = "SELECT password, name, phone FROM account WHERE email = :username OR phone = :username";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
     
-    // Check if the user exists
     if ($stmt->rowCount() > 0) {
-        $hashedPassword = $stmt->fetchColumn();
-
-        // Verify the password
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+        $hashedPassword = $userData['password'];
+        $name = $userData['name']; // Changed from phone to name
+        
         if (password_verify($password, $hashedPassword)) {
-            echo json_encode(["success" => true, "message" => "Đăng nhập thành công!"]);
+            session_regenerate_id(true);
+            $_SESSION["user_id"] = $userData['phone']; // Store phone as user ID
+            $_SESSION["user_name"] = $userData['name']; // Store name
+            
+            $response["success"] = true;
+            $response["message"] = "Đăng nhập thành công!";
+            $response["name"] = $name;
+            
         } else {
             echo json_encode(["success" => false, "message" => "Mật khẩu không chính xác."]);
         }
@@ -33,8 +39,17 @@ if ($username && $password) {
         echo json_encode(["success" => false, "message" => "Email hoặc số điện thoại không tồn tại."]);
     }
 } else {
-    echo json_encode(["success" => false, "message" => "Thiếu thông tin cần thiết."]);
+    $response["success"] = false;
+    $response["message"] = "Thiếu thông tin cần thiết.";
 }
 
 $conn = null;
+
+if (isset($_SESSION["user_id"])) {
+    $response["user_id"] = $_SESSION["user_id"];
+} else {
+    $response["error"] = "User not logged in.";
+}
+
+echo json_encode($response);
 ?>

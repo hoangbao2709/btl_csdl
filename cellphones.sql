@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2025 at 10:19 AM
+-- Generation Time: Apr 21, 2025 at 04:09 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,6 +41,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`name`, `phone`, `email`, `birthdate`, `password`, `isStudent`) VALUES
+('Bao', '0368287072', 'hoangbao270904@gmail.com', '2025-04-17', '$2y$10$XxG4Id/VS98IOwR1zl3FYeiyy0L20g02svhCl73cgISseAzHNb1da', 'on'),
 ('123', '123', '123@gmail.com', '2025-04-11', '$2y$10$3SgvojNsrliv.yVbsy6LtOIaGpxZ3RlE.41Wy9qOsec1pSlK3aN0i', 'on');
 
 -- --------------------------------------------------------
@@ -50,16 +51,16 @@ INSERT INTO `account` (`name`, `phone`, `email`, `birthdate`, `password`, `isStu
 --
 
 CREATE TABLE `am_thanh` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -68,16 +69,15 @@ CREATE TABLE `am_thanh` (
 --
 
 INSERT INTO `am_thanh` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(1, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
-(2, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
-(3, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
-(4, '123', '32', '-7', '123', 10, '23', '1231', 'am_thanh', 'Active', '123'),
-(8, '123', '231', '177', '23', 23, '123', '1231', 'am_thanh', 'Active', '1231'),
-(9, '123', '231', '177', '23', 23, '123', '1231', 'am_thanh', 'Active', '1231'),
-(10, '123', '231', '177', '23', 23, '123', '1231', 'am_thanh', 'Active', '1231'),
-(11, '123', '123', '-28', '123', 23, '123', '123', 'am_thanh', 'Active', '1231'),
-(12, '123', '123', '-28', '123', 23, '123', '123', 'am_thanh', 'Active', '1231'),
-(13, '123', '123', '-28', '123', 23, '123', '123', 'am_thanh', 'Active', '1231');
+(163, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(244, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(245, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(246, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(247, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(248, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(249, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(250, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung'),
+(251, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'am_thanh', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -86,18 +86,53 @@ INSERT INTO `am_thanh` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`,
 --
 
 CREATE TABLE `dien_thoai_taplet` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dien_thoai_taplet`
+--
+
+INSERT INTO `dien_thoai_taplet` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(110, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(111, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(112, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(113, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(114, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(115, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(116, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(117, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(118, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(119, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(122, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(123, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(164, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(176, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(177, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(178, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(179, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(180, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(181, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(182, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(183, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(184, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(185, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(186, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(187, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(188, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(189, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(190, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung'),
+(191, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'dien_thoai_taplet', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -106,16 +141,16 @@ CREATE TABLE `dien_thoai_taplet` (
 --
 
 CREATE TABLE `dong_ho_camera` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -126,18 +161,37 @@ CREATE TABLE `dong_ho_camera` (
 --
 
 CREATE TABLE `do_gia_dung` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `do_gia_dung`
+--
+
+INSERT INTO `do_gia_dung` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(203, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(204, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(205, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(206, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(207, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(208, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(209, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(210, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(211, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(212, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(213, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(214, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung'),
+(215, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'do_gia_dung', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -146,18 +200,28 @@ CREATE TABLE `do_gia_dung` (
 --
 
 CREATE TABLE `favorite` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
-  `company` varchar(500) NOT NULL
+  `Status` enum('Active','Inactive') NOT NULL,
+  `company` varchar(500) NOT NULL,
+  `phone` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `favorite`
+--
+
+INSERT INTO `favorite` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`, `phone`) VALUES
+(223, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 0, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung', '123'),
+(224, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 0, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung', '123'),
+(225, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 0, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung', '123');
 
 -- --------------------------------------------------------
 
@@ -166,18 +230,35 @@ CREATE TABLE `favorite` (
 --
 
 CREATE TABLE `laptop` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `laptop`
+--
+
+INSERT INTO `laptop` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(192, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(193, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(194, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(195, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(196, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(197, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(198, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(199, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(200, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(201, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung'),
+(202, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'laptop', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -186,18 +267,34 @@ CREATE TABLE `laptop` (
 --
 
 CREATE TABLE `pc_man_hinh_may_in` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pc_man_hinh_may_in`
+--
+
+INSERT INTO `pc_man_hinh_may_in` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(216, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(217, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(218, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(219, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(220, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(221, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(222, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(223, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(224, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung'),
+(225, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'pc_man_hinh_may_in', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -206,18 +303,33 @@ CREATE TABLE `pc_man_hinh_may_in` (
 --
 
 CREATE TABLE `phu_kien` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `phu_kien`
+--
+
+INSERT INTO `phu_kien` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(226, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(227, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(228, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(229, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(230, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(231, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(232, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(233, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung'),
+(234, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'phu_kien', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -226,18 +338,27 @@ CREATE TABLE `phu_kien` (
 --
 
 CREATE TABLE `store` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL,
-  `so_luong` int(255) NOT NULL
+  `so_luong` int(255) NOT NULL,
+  `phone` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `store`
+--
+
+INSERT INTO `store` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`, `so_luong`, `phone`) VALUES
+(222, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 0, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung', 4, '123');
 
 -- --------------------------------------------------------
 
@@ -246,18 +367,33 @@ CREATE TABLE `store` (
 --
 
 CREATE TABLE `tivi` (
-  `id` int(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tivi`
+--
+
+INSERT INTO `tivi` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
+(235, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(236, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(237, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(238, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(239, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(240, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(241, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(242, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung'),
+(243, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'tivi', 'Active', 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -268,14 +404,14 @@ CREATE TABLE `tivi` (
 CREATE TABLE `trang_chu` (
   `id` int(255) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `gia_goc` varchar(500) NOT NULL,
-  `gia` varchar(500) NOT NULL,
-  `giam_gia` varchar(500) NOT NULL,
-  `inventory` int(255) NOT NULL,
+  `gia_goc` decimal(10,2) NOT NULL CHECK (`gia_goc` >= 0),
+  `gia` decimal(10,2) NOT NULL CHECK (`gia` >= 0),
+  `giam_gia` decimal(10,2) NOT NULL CHECK (`giam_gia` >= 0),
+  `inventory` int(11) NOT NULL CHECK (`inventory` >= 0),
   `description` varchar(500) NOT NULL,
-  `trong_luong` varchar(500) NOT NULL,
+  `trong_luong` decimal(10,2) NOT NULL CHECK (`trong_luong` >= 0),
   `Page` varchar(500) NOT NULL,
-  `Status` varchar(500) NOT NULL,
+  `Status` enum('Active','Inactive') NOT NULL,
   `company` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -284,16 +420,82 @@ CREATE TABLE `trang_chu` (
 --
 
 INSERT INTO `trang_chu` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`) VALUES
-(1, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
-(2, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
-(3, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
-(4, '123', '32', '-7', '123', 10, '23', '1231', 'trang_chu', 'Active', '123'),
-(26, '123', '231', '177', '23', 23, '123', '1231', 'trang_chu', 'Active', '1231'),
-(27, '123', '231', '177', '23', 23, '123', '1231', 'trang_chu', 'Active', '1231'),
-(28, '123', '231', '177', '23', 23, '123', '1231', 'trang_chu', 'Active', '1231'),
-(29, '123', '123', '-28', '123', 23, '123', '123', 'trang_chu', 'Active', '1231'),
-(30, '123', '123', '-28', '123', 23, '123', '123', 'trang_chu', 'Active', '1231'),
-(31, '123', '123', '-28', '123', 23, '123', '123', 'trang_chu', 'Active', '1231');
+(176, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(177, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(178, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(179, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(180, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(181, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(182, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(183, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(184, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(185, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(186, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(187, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(188, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(189, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(190, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(191, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(192, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(193, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(194, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(195, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(196, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(197, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(198, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(199, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(200, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(201, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(202, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(203, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(204, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(205, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(206, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(207, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(208, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(209, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(210, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(211, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(212, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(213, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(214, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(215, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(216, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(217, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(218, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(219, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(220, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(221, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(222, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(223, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(224, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(225, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(226, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(227, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(228, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(229, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(230, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(231, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(232, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(233, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(234, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(235, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(236, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(237, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(238, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(239, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(240, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(241, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(242, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(243, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(244, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(245, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(246, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(247, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(248, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(249, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(250, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung'),
+(251, 'Samsung Galaxy Z Flip6 12GB 256GB', 1000000.00, 900000.00, 10.00, 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', 165.00, 'trang_chu', 'Active', 'Samsung');
 
 --
 -- Indexes for dumped tables
@@ -303,8 +505,8 @@ INSERT INTO `trang_chu` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`name`),
-  ADD UNIQUE KEY `phone` (`phone`);
+  ADD PRIMARY KEY (`phone`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `am_thanh`
@@ -334,7 +536,8 @@ ALTER TABLE `do_gia_dung`
 -- Indexes for table `favorite`
 --
 ALTER TABLE `favorite`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_phone` (`phone`);
 
 --
 -- Indexes for table `laptop`
@@ -355,12 +558,6 @@ ALTER TABLE `phu_kien`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `store`
---
-ALTER TABLE `store`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tivi`
 --
 ALTER TABLE `tivi`
@@ -377,70 +574,20 @@ ALTER TABLE `trang_chu`
 --
 
 --
--- AUTO_INCREMENT for table `am_thanh`
---
-ALTER TABLE `am_thanh`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `dien_thoai_taplet`
---
-ALTER TABLE `dien_thoai_taplet`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
-
---
--- AUTO_INCREMENT for table `dong_ho_camera`
---
-ALTER TABLE `dong_ho_camera`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `do_gia_dung`
---
-ALTER TABLE `do_gia_dung`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `favorite`
---
-ALTER TABLE `favorite`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `laptop`
---
-ALTER TABLE `laptop`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `pc_man_hinh_may_in`
---
-ALTER TABLE `pc_man_hinh_may_in`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `phu_kien`
---
-ALTER TABLE `phu_kien`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `store`
---
-ALTER TABLE `store`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tivi`
---
-ALTER TABLE `tivi`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
 -- AUTO_INCREMENT for table `trang_chu`
 --
 ALTER TABLE `trang_chu`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `favorite`
+--
+ALTER TABLE `favorite`
+  ADD CONSTRAINT `fk_phone` FOREIGN KEY (`phone`) REFERENCES `account` (`phone`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

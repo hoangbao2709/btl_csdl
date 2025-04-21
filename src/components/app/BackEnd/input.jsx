@@ -138,8 +138,9 @@ export default function Input() {
     e.preventDefault();
     const form = $(e.target);
     const formData = new FormData(form[0]);
+
     for (let i = 0; i < files.length; i++) {
-      formData.append("file[]", files[i].title);
+      formData.append('file[]', files[i].title);
     }
 
     $.ajax({
@@ -149,14 +150,19 @@ export default function Input() {
       processData: false,
       contentType: false,
       success(data) {
+        console.log("data", data.message);
         if (data.success) {
-          setID(id + 1);
+          alert("Dữ liệu đã được thêm thành công!");
         } else {
           alert(data.message);
         }
       },
+      error(jqXHR, textStatus, errorThrown) {
+        alert("Có lỗi xảy ra: " + textStatus); // Xử lý lỗi AJAX
+      },
     });
   };
+
 
   const handleDrop = (event) => {
     event.preventDefault();

@@ -11,6 +11,7 @@ $currentPage = $_SERVER['REQUEST_URI'];
 
 $url = isset($_GET['id']) ? $_GET['id'] : null;
 $sl = isset($_GET['sl']) ? $_GET['sl'] : null;
+$phone = isset($_GET['phone']) ? $_GET['phone'] : null;
 
 if ($url === null) {
     echo json_encode(['error' => 'ID parameter is missing']);
@@ -30,26 +31,24 @@ if (empty($users)) {
 
 $product = $users[0];
 
-$checkSql = "SELECT * FROM store WHERE id = :id";
+$checkSql = "SELECT * FROM store WHERE id = :id AND phone = :phone";
 $checkStmt = $conn->prepare($checkSql);
 $checkStmt->bindParam(':id', $product['id'], PDO::PARAM_INT);
+$checkStmt->bindParam(':phone', $phone, PDO::PARAM_STR);
 $checkStmt->execute();
 $existingProduct = $checkStmt->fetch(PDO::FETCH_ASSOC);
 
 if ($existingProduct) {
-    $updateSql = "UPDATE store SET so_luong = :sl WHERE id = :id";
+    $updateSql = "UPDATE store SET so_luong = :sl WHERE id = :id AND phone = :phone";
     $updateStmt = $conn->prepare($updateSql);
-
     $updateStmt->bindParam(':id', $product['id'], PDO::PARAM_INT);
     $updateStmt->bindParam(':sl', $sl, PDO::PARAM_INT);
-
+    $updateStmt->bindParam(':phone', $phone, PDO::PARAM_STR);
     $updateStmt->execute();
 } else {
-    $insertSql = "INSERT INTO store (id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company, so_luong) 
-                  VALUES (:id, :name, :gia_goc, :gia, :giam_gia, :description, :trong_luong, 'trang_chu', 'Active', :company, :sl)";
-
+    $insertSql = "INSERT INTO store (id, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company, so_luong, phone) 
+                  VALUES (:id, :name, :gia_goc, :gia, :giam_gia, :description, :trong_luong, 'trang_chu', 'Active', :company, :sl, :phone)";
     $insertStmt = $conn->prepare($insertSql);
-
     $insertStmt->bindParam(':id', $product['id'], PDO::PARAM_INT);
     $insertStmt->bindParam(':name', $product['name'], PDO::PARAM_STR);
     $insertStmt->bindParam(':gia_goc', $product['gia_goc'], PDO::PARAM_STR);
@@ -59,11 +58,11 @@ if ($existingProduct) {
     $insertStmt->bindParam(':trong_luong', $product['trong_luong'], PDO::PARAM_STR);
     $insertStmt->bindParam(':company', $product['company'], PDO::PARAM_STR);
     $insertStmt->bindParam(':sl', $sl, PDO::PARAM_INT);
-
+    $insertStmt->bindParam(':phone', $phone, PDO::PARAM_STR);
     $insertStmt->execute();
 }
 
 $conn = null; 
 
-echo json_encode($users); 
+echo json_encode(['success' => true, 'data' => $users]); 
 ?>

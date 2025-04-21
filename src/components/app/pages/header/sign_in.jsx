@@ -5,23 +5,41 @@ import { useState, useRef, useEffect } from "react";
 import { data } from "jquery";
 
 const SigninForm = () => {
-  const [identifier, setIdentifier] = useState(""); // For phone or email
-  const [password, setPassword] = useState(""); // For password
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(`http://localhost/btl_csdl/src/components/app/BackEnd/php/login.php?&username=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.success);
-      alert(data.message);
-      if(data.success){
-        
-      }else{
 
+    if (!identifier || !password) {
+      alert("Vui lòng nhập tên người dùng và mật khẩu.");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `http://localhost/btl_csdl/src/components/app/BackEnd/php/login.php?username=${encodeURIComponent(
+          identifier
+        )}&password=${encodeURIComponent(password)}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    })
-    
+
+      const data = await response.json();
+      alert(data.message);
+
+      if (data.success) {
+        console.log(data);
+        sessionStorage.setItem('user_id', data['user_id']);
+        window.location.href = '/main/Trang_Chu';
+      } else {
+      }
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      alert("Đã xảy ra lỗi. Vui lòng thử lại.");
+    }
   };
 
   return (
@@ -32,9 +50,7 @@ const SigninForm = () => {
           <div className="text-center mb-6">
             <img src={logo} alt="Logo" className="mx-auto mb-4" />
           </div>
-          <form 
-            onSubmit={handleSubmit}
-          >
+          <form onSubmit={handleSubmit}>
             <div class="relative">
               <input
                 type="text"
@@ -94,7 +110,13 @@ const SigninForm = () => {
               </label>
             </div>
 
-            <div className="h-[40px] w-full flex justify-end items-center">
+            <div className="h-[40px] w-full flex justify-end items-center relative">
+              <div className="absolute left-0">
+                <input type="checkbox" id="remember" value="1" />
+                <label for="remember" className="ml-[10px]">
+                  Ghi nhớ đăng nhập
+                </label>
+              </div>
               <a href="">Quên mật khẩu?</a>
             </div>
             <button

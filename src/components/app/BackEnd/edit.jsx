@@ -460,8 +460,8 @@ export default function Input() {
               <div class="relative">
                 <input
                   type="text"
-                  id="invester"
-                  name="invester"
+                  id="inventory"
+                  name="inventory"
                   defaultValue={submittedInvester}
                   onChange={handleChange}
                   class="peer py-4 px-[10px] block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-sm placeholder:text-transparent focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none

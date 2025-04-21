@@ -46,27 +46,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Dien_thoai_Taplet.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Dien_thoai_Taplet.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -82,27 +82,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Laptop.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Laptop.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -118,27 +118,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {PC_man_hinh_May_in.map((image, index) => {
-              const imgs = getImg(image.img);
+            {PC_man_hinh_May_in.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -154,27 +154,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Am_thanh.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Am_thanh.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -190,27 +190,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Dong_ho_Camera.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Dong_ho_Camera.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -226,27 +226,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Do_gia_dung.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Do_gia_dung.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -262,27 +262,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Tivi.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Tivi.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>
@@ -298,27 +298,27 @@ export const Test = (item) => {
             modules={[Autoplay, Pagination, Navigation]}
             className="w-[1200px]"
         >
-            {Phu_kien.map((image, index) => {
-              const imgs = getImg(image.img);
+            {Phu_kien.map((element, index) => {
+              const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
               <SwiperSlide key={index}>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
                   <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
                     <img
                       src={imgSrc}
                       alt="Framed"
                     />
-                    <p className="font-bold">{image.name}</p>
+                    <p className="font-bold">{element.name}</p>
                     <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{image.gia}</strong>
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
                       <label
                         className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
                         id="original-price"
                       >
-                        <strong>{image.gia_goc}</strong>
+                        <strong>{element.gia_goc}</strong>
                       </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{image.description}</p>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
                     </div>
                   </div>
                 </a>

@@ -9,8 +9,10 @@ if ($conn->connect_error) {
     die(json_encode(["success" => false, "message" => "Kết nối thất bại: " . $conn->connect_error]));
 }
 
-header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json; charset=utf-8');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 $conn->set_charset("utf8");
 
 $inventory = mysqli_real_escape_string($conn, $_POST["inventory"]);
@@ -35,15 +37,22 @@ $tables = [
 ];
 
 $sql = "INSERT INTO trang_chu (inventory, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
-        VALUES ('$inventory', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', 'Active', '$company')";
+        VALUES ('$inventory', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', 'trang_chu', '$status', '$company')";
 
 $response = [];
-if ($conn->query($sql) === TRUE) {
-    $response["success"] = true;
-    $response["message"] = "Dữ liệu đã được thêm thành công.";
-} else {
+try {
+    if ($conn->query($sql) === TRUE) {
+        $last_id = $conn->insert_id; 
+        $response["success"] = true;
+        $response["message"] = "Dữ liệu đã được thêm thành công.";
+        $response["id"] = $last_id; 
+    } else {
+        $response["success"] = false;
+        $response["message"] = "Không thể thêm dữ liệu vào bảng.";
+    }
+} catch (mysqli_sql_exception $e) {
     $response["success"] = false;
-    $response["message"] = "Lỗi khi thêm dữ liệu: " . $conn->error;
+    $response["message"] = "Lỗi khi thêm dữ liệu: " . $e->getMessage();
     echo json_encode($response);
     $conn->close();
     exit;
@@ -51,8 +60,8 @@ if ($conn->query($sql) === TRUE) {
 
 foreach ($tables as $table) {
     if (isset($_POST[$table])) {
-        $sql = "INSERT INTO " . strtolower($table) . "(inventory, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
-                VALUES ('$inventory', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', '$table', 'Active', '$company')";
+        $sql = "INSERT INTO " . strtolower($table) . " (id, inventory, name, gia_goc, gia, giam_gia, description, trong_luong, Page, Status, company) 
+                VALUES ('$last_id', '$inventory', '$name', '$gia_goc', '$gia', '$giam_gia', '$description', '$trong_luong', '$table', '$status', '$company')";
 
         if ($conn->query($sql) !== TRUE) {
             $response["success"] = false;
@@ -65,16 +74,20 @@ foreach ($tables as $table) {
 }
 
 $upload_dirs = [
-    'am_thanh' => './images/am_thanh/' . $id . '/',
-    'dien_thoai_taplet' => './images/dien_thoai_taplet/' . $id . '/',
-    'dong_ho_camera' => './images/dong_ho_camera/' . $id . '/',
-    'do_gia_dung' => './images/do_gia_dung/' . $id . '/',
-    'laptop' => './images/laptop/' . $id . '/',
-    'pc_man_hinh_may_in' => './images/pc_man_hinh_may_in/' . $id . '/',
-    'phu_kien' => './images/phu_kien/' . $id . '/',
-    'tivi' => './images/tivi/' . $id . '/',
-    'trang_chu' => './images/trang_chu/' . $id . '/'
+    'am_thanh' => './images/am_thanh/' . $last_id . '/',
+    'dien_thoai_taplet' => './images/dien_thoai_taplet/' . $last_id . '/',
+    'dong_ho_camera' => './images/dong_ho_camera/' . $last_id . '/',
+    'do_gia_dung' => './images/do_gia_dung/' . $last_id . '/',
+    'laptop' => './images/laptop/' . $last_id . '/',
+    'pc_man_hinh_may_in' => './images/pc_man_hinh_may_in/' . $last_id . '/',
+    'phu_kien' => './images/phu_kien/' . $last_id . '/',
+    'tivi' => './images/tivi/' . $last_id . '/',
+    'trang_chu' => './images/trang_chu/' . $last_id . '/'
 ];
+
+if (!file_exists($upload_dirs['trang_chu'])) {
+    mkdir($upload_dirs['trang_chu'], 0777, true);
+}
 
 $countName = 0;
 
@@ -83,7 +96,7 @@ if (isset($_FILES['file'])) {
     foreach ($_FILES['file']['name'] as $key => $name) {
         $temp_path = $_FILES['file']['tmp_name'][$key];
         $fileInfo = pathinfo($name);
-        $filename = $id . '_' . basename($countName++) . '_.' . $fileInfo['extension'];
+        $filename = $last_id . '_' . basename($countName++) . '_.' . $fileInfo['extension'];
 
         if (!file_exists($upload_dirs['trang_chu'])) {
             mkdir($upload_dirs['trang_chu'], 0777, true);

@@ -31,7 +31,7 @@ export default function Laptop(item) {
   if (String(pageNumber) === String(resultLocation)) {
     itemNumber = "1";
   } else itemNumber = String(pageNumber);
-
+  console.log("images",images);
   return (
     <div>
       <div>

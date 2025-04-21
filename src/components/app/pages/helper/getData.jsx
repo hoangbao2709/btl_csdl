@@ -20,7 +20,7 @@ export function useData(img = [], url) {
 
       fetchData();
   }, [url]);
-
+    
   function getTampNumber(item){
     const fileName = item.split('/').pop();
     return fileName.split('_')[0];

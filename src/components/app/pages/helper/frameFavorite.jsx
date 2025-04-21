@@ -9,14 +9,6 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + 'đ';
     }
 
-    const getImg = (img) => {
-        const result = img.filter(ele => {
-            const fileName = ele.split('/');
-            const pathParts = fileName[fileName.length - 1].split("_");
-            return pathParts.includes("0");
-        });
-        return result;
-    };
 
     let count = 0;
 
@@ -31,7 +23,6 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
     }
 
     const view = item.slice(index, index + max_index).map((element, idx) => {
-        const imgs = getImg(element.img);
         if (idx % count === 0 && idx !== 0) {
             totalView.push(
                 <ul className='flex w-full h-full mb-[50px] justify-center' key={`group-${idx}`}>
@@ -40,7 +31,6 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
             );
             oneView = [];
         }
-        const imgSrc = imgs.length > 0 ? imgs[0] : '';
         oneView.push(
             <li
                 className='h-auto font-mono overflow-hidden w-full relative fix  m-0 mx-[10px] max-sm:mx-1'
@@ -50,7 +40,7 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
                     <a href={`/Product/${element.page}/${element.id}`} >
                         <div className='overflow-hidden fit object-cover'>
                             <img
-                                src={imgSrc}
+                                src={element.img}
                                 alt="Framed"
                             />
                         </div>

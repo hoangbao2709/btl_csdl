@@ -10,6 +10,7 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
     }
 
     const getImg = (img) => {
+        
         const result = img.filter(ele => {
             const fileName = ele.split('/');
             const pathParts = fileName[fileName.length - 1].split("_");
@@ -41,6 +42,7 @@ const Frame  = ({ item, index, max_index, childWidth }) => {
             oneView = [];
         }
         const imgSrc = imgs.length > 0 ? imgs[0] : '';
+
         oneView.push(
             <li
                 className='h-auto font-mono overflow-hidden w-full relative fix  m-0 mx-[10px] max-sm:mx-1'
