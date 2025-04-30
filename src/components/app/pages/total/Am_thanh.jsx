@@ -32,12 +32,13 @@ const Am_thanh = (item) => {
   if (String(pageNumber) === String(resultLocation)) {
     itemNumber = "1";
   } else itemNumber = String(pageNumber);
-  console.log(images);
+  console.log("resultLocation", pageNumber);
   return (
     <div>
       <Test
         currentPage={Number(itemNumber)}
         location={resultLocation}
+        distLocation={item.resultLocation}
         images={images}
         childWidth={item.Width}
       />

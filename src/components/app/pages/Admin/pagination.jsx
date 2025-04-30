@@ -11,7 +11,7 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
     const pagination = {
         totalItems: data.length,
         totalItemsPerPage: 10,
-        pageRanges: 10
+        pageRanges: 3
     };
 
     const totalItems = pagination.totalItems;
@@ -33,7 +33,7 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
     }
 
     if (min > 1) {
-        xhtmlPages.push(<li key="start-ellipsis" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border rounded-e-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</li>);
+        xhtmlPages.push(<li key="start-ellipsis" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border rounded-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</li>);
     }
 
     let i = 1;
@@ -128,7 +128,7 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
 
 
     if (max < totalPages) {
-        xhtmlPages.push(<li key="end-ellipsis" className='flex items-center justify-center p-5 m-3 h-8 leading-tight text-white bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>...</li>);
+        xhtmlPages.push(<li key="end-ellipsis" className='flex items-center justify-center p-5 m-3 h-8 leading-tight text-white bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>...</li>);
     }
 
     let index = (currentPage - 1) * totalItemsPerPage;

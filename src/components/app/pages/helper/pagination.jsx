@@ -12,7 +12,7 @@ import "./style/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Test = (item) => {
-  const { currentPage, location, images: images, childWidth, favourite } = item;
+  const { currentPage, location, distLocation, images: images, childWidth, favourite } = item;
   const [test, setTest] = useState();
   const pagination = {
     totalItems: images.length,
@@ -271,7 +271,7 @@ export const Test = (item) => {
   xhtmlStart.push(
     <li>
       <a
-        href={`${location}/1`}
+        href={`${distLocation}/1`}
         className="flex items-center max-sm:hidden justify-center p-5 m-3 h-8  leading-tight text-gray-500 bg-white border border-e-0 rounded-lg border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       >
         Start
@@ -281,7 +281,7 @@ export const Test = (item) => {
   xhtmlPrevious.push(
     <li>
       <a
-        href={`${location}/1`}
+        href={`${distLocation}/1`}
         className="flex items-center justify-center p-5 m-3 h-8  leading-tight text-gray-500 bg-white rounded-lg border border-e-0 border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       >
         &#60;
@@ -292,7 +292,7 @@ export const Test = (item) => {
   xhtmlNext.push(
     <li>
       <a
-        href={`${location}/${totalPages}`}
+        href={`${distLocation}/${totalPages}`}
         className="flex items-center justify-center p-5 m-3 h-8 leading-tight text-white bg-black border rounded-lg border-gray-300hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       >
         &#62;
@@ -302,7 +302,7 @@ export const Test = (item) => {
   xhtmlEnd.push(
     <li>
       <a
-        href={`${location}/${totalPages}`}
+        href={`${distLocation}/${totalPages}`}
         className="flex max-sm:hidden items-center max-sm:hiden justify-center p-5 m-3 h-8 leading-tight text-white bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       >
         End

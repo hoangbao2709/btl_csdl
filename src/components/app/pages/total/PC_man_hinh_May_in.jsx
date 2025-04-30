@@ -31,17 +31,16 @@ export default function PC_man_hinh_May_in(item) {
   if (String(pageNumber) === String(resultLocation)) {
     itemNumber = "1";
   } else itemNumber = String(pageNumber);
-
+  console.log("resultLocation", pageNumber);
   return (
     <div>
-      <div>
-        <Test
-          currentPage={Number(itemNumber)}
-          location={resultLocation}
-          images={images}
-          childWidth={item.Width}
-        />
-      </div>
+      <Test
+        currentPage={Number(itemNumber)}
+        location={resultLocation}
+        distLocation={item.resultLocation}
+        images={images}
+        childWidth={item.Width}
+      />
     </div>
   );
 }

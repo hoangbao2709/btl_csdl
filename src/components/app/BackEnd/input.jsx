@@ -142,7 +142,7 @@ export default function Input() {
     for (let i = 0; i < files.length; i++) {
       formData.append('file[]', files[i].title);
     }
-
+    console.log("data", form);
     $.ajax({
       type: "POST",
       url: form.attr("action"),
@@ -150,7 +150,6 @@ export default function Input() {
       processData: false,
       contentType: false,
       success(data) {
-        console.log("data", data.message);
         if (data.success) {
           alert("Dữ liệu đã được thêm thành công!");
         } else {

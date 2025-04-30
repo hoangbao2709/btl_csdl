@@ -67,6 +67,7 @@ export const Favorite = (item) => {
       <Test
         currentPage={Number(itemNumber)}
         location={resultLocation}
+        distLocation={item.resultLocation}
         images={images}
         childWidth={item.Width}
         favourite={favourite}

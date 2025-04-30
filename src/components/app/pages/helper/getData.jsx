@@ -20,7 +20,9 @@ export function useData(img = [], url) {
 
       fetchData();
   }, [url]);
-    
+//   console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/${url}.php`);
+//   console.log("data" ,data);
+
   function getTampNumber(item){
     const fileName = item.split('/').pop();
     return fileName.split('_')[0];

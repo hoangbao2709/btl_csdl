@@ -241,10 +241,11 @@ export default function Input() {
     e.preventDefault();
     const form = $(e.target);
     const formData = new FormData(form[0]);
+    
     for (let i = 0; i < files.length; i++) {
       formData.append("file[]", files[i].title);
     }
-
+  
     $.ajax({
       type: "POST",
       url: form.attr("action"),
@@ -254,10 +255,14 @@ export default function Input() {
       success(data) {
         if (data.success) {
           setID(id + 1);
+          alert("Update successful!");
         } else {
           alert(data.message);
         }
       },
+      error(jqXHR, textStatus, errorThrown) {
+        alert("An error occurred: " + textStatus + " - " + errorThrown); 
+      }
     });
   };
 
