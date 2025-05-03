@@ -21,30 +21,18 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
 
     let xhtmlStart = [], xhtmlNext = [], xhtmlPrevious = [], xhtmlEnd = [], xhtmlPages = [];
 
-    const countI = Math.ceil(pageRange / 2);
-    let min = currentPage - countI + 1, max = totalPages;
+    let min = Math.max(1, currentPage - Math.floor(pageRange / 2));
+    let max = Math.min(totalPages, min + pageRange - 1);
 
-    if (min <= 1) {
-        min = 1;
-    }
-    max = min + pageRange;
-    if (max > totalPages) {
-        max = totalPages;
+    if (max - min < pageRange - 1) {
+        min = Math.max(1, max - (pageRange - 1));
     }
 
     if (min > 1) {
-        xhtmlPages.push(<li key="start-ellipsis" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border rounded-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</li>);
+        xhtmlPages.push(
+            <li key="start-ellipsis" className='flex items-center justify-center p-5 m-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>...</li>
+        );
     }
-
-    let i = 1;
-
-    if (min + countI >= totalPages) {
-        i = totalPages - pageRange + 1;
-    } else {
-        i = min;
-    }
-
-    if (i <= 0) i = 1;
 
     function handleClickStart(){
         setCurrentPage(1);
@@ -69,31 +57,18 @@ const PaginationHelper = ({ data = [], checkedItems, handleCheckboxChange, forma
         setCurrentPage(page);
     }
     
-    for (let i = 1; i <= max && i <= totalPages; i++) { 
-        if (i !== currentPage) {
-            xhtmlPages.push(
-                <li key={i}>
-                    <div 
-                        onClick={() => handleClickI(i)} 
-                        className="flex items-center justify-center p-5 m-3 h-8 leading-tight text-gray-500 bg-white border rounded-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                        {i}
-                    </div>
-                </li>
-            );
-        } else {
-            xhtmlPages.push(
-                <li key={i}>
-                    <div 
-                        onClick={() => handleClickI(i)}
-                        aria-current="page" 
-                        className="flex items-center justify-center p-5 m-3 h-8 text-blue-600 border border-gray-300 rounded-lg bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                    >
-                        {i}
-                    </div>
-                </li>
-            );
-        }
+    for (let i = min; i <= max; i++) {
+        xhtmlPages.push(
+            <li key={i}>
+                <div 
+                    onClick={() => handleClickI(i)} 
+                    className={`flex items-center justify-center p-5 m-3 h-8 leading-tight ${i === currentPage ? 'text-blue-600 border border-gray-300 rounded-lg bg-blue-50' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'} dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                    aria-current={i === currentPage ? 'page' : undefined}
+                >
+                    {i}
+                </div>
+            </li>
+        );
     }
 
     xhtmlStart.push(

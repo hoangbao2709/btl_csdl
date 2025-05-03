@@ -14,6 +14,5 @@ export function Data(url) {
         console.error("Error fetching data:", error);
       });
   }, [url]); 
-  // console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/getSearch.php?&url=${encodeURIComponent(url)}`);
   return data;
 }

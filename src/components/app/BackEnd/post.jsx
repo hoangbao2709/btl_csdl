@@ -214,6 +214,8 @@ export default function Post() {
             const updatedData = data.map((element) => {
                 if (element.id === id) {
                     const newStatus = element.Status === "Active" ? "Inactive" : "Active";
+                    console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/setStatus.php?&url=${encodeURIComponent(element.Page)}&variable=${encodeURIComponent(newStatus)}&id=${encodeURIComponent(id)}`);
+
                     fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/setStatus.php?&url=${encodeURIComponent(element.Page)}&variable=${encodeURIComponent(newStatus)}&id=${encodeURIComponent(id)}`)
                         .then((response) => response.json())
                         .then((data) => {

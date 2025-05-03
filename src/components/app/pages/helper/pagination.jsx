@@ -23,6 +23,7 @@ export const Test = (item) => {
   const totalItemsPerPage = pagination.totalItemsPerPage;
   const totalPages = Math.ceil(totalItems / totalItemsPerPage);
   const pageRange = pagination.pageRanges;
+  
   let xhtmlStart = [],
     xhtmlNext = [],
     xhtmlPrevious = [],
