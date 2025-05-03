@@ -77,8 +77,6 @@ export default function Input() {
       });
   }, [value]);
 
-  console.log(data[0]);
-
   useEffect(() => {
     if (data && data.length > 0) {
       const initialValue = data[0].id;
@@ -170,7 +168,7 @@ export default function Input() {
         console.error('Error fetching file:', error);
         return null;
     }
-}
+  }
 
   async function loadAndProcessImages() {
         try {
@@ -193,7 +191,6 @@ export default function Input() {
             );
 
             const convertedFiles = (await Promise.all(fileConversionPromises)).filter(Boolean);
-            console.log(convertedFiles);
             setFiles(convertedFiles);
         } catch (error) {
             console.error('Error in image processing:', error);
@@ -245,6 +242,7 @@ export default function Input() {
     for (let i = 0; i < files.length; i++) {
       formData.append("file[]", files[i].title);
     }
+    console.log(files);
     $.ajax({
       type: "POST",
       url: form.attr("action"),
@@ -709,7 +707,7 @@ export default function Input() {
                     >
                       <div
                         onClick={() => handleMinus(index)}
-                        className="z-10 absolute flex items-center justify-center h-[30px] w-[30px] cursor-pointer top-[3%] right-[3%] bg-red-600 rounded-[50%] transition-transform transform hover:scale-110"
+                        className="z-10 absolute flex items-center justify-center  w-[30px] cursor-pointer top-[3%] right-[3%] bg-red-600 rounded-[50%] transition-transform transform hover:scale-110"
                       >
                         <FontAwesomeIcon
                           className="text-white"
@@ -741,14 +739,14 @@ export default function Input() {
                     spaceBetween={10}
                     slidesPerView={7}
                     scrollbar={{ draggable: true }}
-                    style={{ height: "100px" }}
+                    style={{ height: "120px" }}
                     allowTouchMove={false}
                     onSwiper={(swiper) => (chillSwiperRef.current = swiper)}
                   >
                     {files.map((image, ind) => {
                       return (
                         <SwiperSlide
-                          className="cursor-pointer"
+                          className="cursor-pointer h-[100px]"
                           onClick={() => HandleClick(ind)}
                         >
                           {edit ? (

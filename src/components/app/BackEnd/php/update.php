@@ -6,7 +6,7 @@ $dbname = "cellphones";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    die(json_encode(["success" => false, "message" => "Kết nối thất bại: " . $conn->connect_error]));
+    die(json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]));
 }
 
 header('Access-Control-Allow-Origin: http://localhost:3000');
@@ -42,10 +42,10 @@ $stmt->bind_param("ssssssss", $id, $name, $gia_goc, $gia, $giam_gia, $descriptio
 
 if ($stmt->execute()) {
     $response["success"] = true;
-    $response["message"] = "Dữ liệu đã được cập nhật hoặc thêm thành công.";
+    $response["message"] = "Data updated or added successfully.";
 } else {
     $response["success"] = false;
-    $response["message"] = "Lỗi khi cập nhật dữ liệu: " . $stmt->error;
+    $response["message"] = "Error updating data: " . $stmt->error;
     echo json_encode($response);
     $conn->close();
     exit;
@@ -63,6 +63,7 @@ $tables = [
     "tivi",
 ];
 
+// Update other tables
 foreach ($tables as $table) {
     if (isset($_POST[$table])) {
         $sql = "INSERT INTO " . strtolower($table) . " (id, name, gia_goc, gia, giam_gia, description, trong_luong, Status, company) 
@@ -82,7 +83,7 @@ foreach ($tables as $table) {
 
         if (!$stmt->execute()) {
             $response["success"] = false;
-            $response["message"] = "Lỗi khi cập nhật bảng $table: " . $stmt->error;
+            $response["message"] = "Error updating table $table: " . $stmt->error;
             echo json_encode($response);
             $conn->close();
             exit;
@@ -90,35 +91,24 @@ foreach ($tables as $table) {
         $stmt->close();
     }
 }
+
+// Define upload directories
 $upload_dirs = [
-    'am_thanh' => './images/am_thanh/' . $id . '/',
-    'dien_thoai_taplet' => './images/dien_thoai_taplet/' . $id . '/',
-    'dong_ho_camera' => './images/dong_ho_camera/' . $id . '/',
-    'do_gia_dung' => './images/do_gia_dung/' . $id . '/',
-    'laptop' => './images/laptop/' . $id . '/',
-    'pc_man_hinh_may_in' => './images/pc_man_hinh_may_in/' . $id . '/',
-    'phu_kien' => './images/phu_kien/' . $id . '/',
-    'tivi' => './images/tivi/' . $id . '/',
-    'trang_chu' => './images/trang_chu/' . $id . '/'
+    'trang_chu' => './images/trang_chu/' . $id . '/',
 ];
 
-echo json_encode($upload_dirs);
+foreach ($tables as $table) {
+    $upload_dirs[strtolower($table)] = './images/' . strtolower($table) . '/' . $id . '/';
+}
 
-
+// Function to delete a directory
 function deleteDirectory($dir) {
-    if (!is_dir($dir)) {
-        return false;
-    }
+    if (!is_dir($dir)) return false;
 
     $files = array_diff(scandir($dir), ['.', '..']);
-
     foreach ($files as $file) {
         $filePath = "$dir/$file";
-        if (is_dir($filePath)) {
-            deleteDirectory($filePath);
-        } else {
-            unlink($filePath);
-        }
+        is_dir($filePath) ? deleteDirectory($filePath) : unlink($filePath);
     }
     return rmdir($dir);
 }
@@ -135,12 +125,20 @@ if (isset($_FILES['file'])) {
     foreach ($_FILES['file']['name'] as $key => $name) {
         $temp_path = $_FILES['file']['tmp_name'][$key];
         $fileInfo = pathinfo($name);
-        $filename = $id . '_' . basename($countName++) . '_.' . $fileInfo['extension'];
+        $filename = $id . '_' . $countName++ . '_.' . $fileInfo['extension']; // Keep your specified filename format
+
         if (!file_exists($upload_dirs['trang_chu'])) {
             mkdir($upload_dirs['trang_chu'], 0777, true);
         }
+
         $target_path = $upload_dirs['trang_chu'] . $filename;
+        $target_path = explode('?', $target_path)[0];
+
+        error_log(print_r( $target_path, true));
+
+        // Move uploaded file to 'trang_chu' directory
         if (move_uploaded_file($temp_path, $target_path)) {
+            // Copy the file to other directories based on the provided tables
             foreach ($tables as $table) {
                 if (isset($_POST[$table])) {
                     $dir = $upload_dirs[strtolower($table)];
@@ -152,7 +150,7 @@ if (isset($_FILES['file'])) {
             }
         } else {
             $response["success"] = false;
-            $response["message"] = "Lỗi khi tải lên file: " . $name;
+            $response["message"] = "Error uploading file: " . $name;
             echo json_encode($response);
             $conn->close();
             exit;
@@ -160,7 +158,7 @@ if (isset($_FILES['file'])) {
     }
 }
 
-$response["message"] = "Tất cả dữ liệu đã được xử lý thành công.";
+$response["message"] = "All data processed successfully.";
 echo json_encode($response);
 $conn->close();
 ?>
