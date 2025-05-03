@@ -132,9 +132,9 @@ if (isset($_FILES['file'])) {
         }
 
         $target_path = $upload_dirs['trang_chu'] . $filename;
-        $target_path = explode('?', $target_path)[0];
+        $target_path = explode(separator: '?', $target_path)[0];
 
-        error_log(print_r( $target_path, true));
+        error_log(message: print_r( $target_path, true));
 
         // Move uploaded file to 'trang_chu' directory
         if (move_uploaded_file($temp_path, $target_path)) {

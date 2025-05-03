@@ -23,15 +23,15 @@ export const Test = (item) => {
   const totalItemsPerPage = pagination.totalItemsPerPage;
   const totalPages = Math.ceil(totalItems / totalItemsPerPage);
   const pageRange = pagination.pageRanges;
-  
   let xhtmlStart = [],
     xhtmlNext = [],
     xhtmlPrevious = [],
     xhtmlEnd = [],
     xhtmlPages = [];
   const countI = Math.ceil(pageRange / 2);
-  let min = currentPage - countI + 1,
-    max = totalPages;
+
+  let min = Math.max(1, currentPage - Math.floor(pageRange / 2));
+  let max = Math.min(totalPages, min + pageRange - 1);
   const [action, setAction] = useState({ value: "1", label: "Bán chạy nhất" });
   const [open, setOpen] = useState(true);
   const [open1, setOpen1] = useState(true);
@@ -212,67 +212,36 @@ export const Test = (item) => {
     );
   });
 
-  if (min <= 1) {
-    min = 1;
-  }
-  max = min + pageRange;
-  if (max > totalPages) {
-    max = totalPages;
+  if (max - min < pageRange - 1) {
+    min = Math.max(1, max - (pageRange - 1));
   }
 
   if (min > 1) {
     xhtmlPages.push(
-      <li
-        key="start-ellipsis"
-        className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border rounded-e-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        ...
-      </li>
+        <li key="start-ellipsis" className='flex items-center justify-center p-5 m-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>...</li>
     );
-  }
+  } 
 
-  let i = 1;
-
-  if (min + countI >= totalPages) {
-    i = totalPages - pageRange + 1;
-  } else {
-    i = min;
-  }
-
-  if (i <= 0) i = 1;
-
-  for (i; i <= max && i <= totalPages; i++) {
+  for (let i = min; i <= max; i++) {
     let temp = location + "/" + i;
-    if (i !== currentPage) {
-      xhtmlPages.push(
+    xhtmlPages.push(
         <li key={i}>
-          <a
-            href={`${temp}`}
-            className="flex items-center justify-center p-5 m-3 h-8  leading-tight text-gray-500 bg-white border rounded-lg border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >
-            {i}
-          </a>
+            <a 
+              href={`${temp}`}
+              onClick={() => handleClickI(i)} 
+              className={`flex items-center justify-center p-5 m-3 h-8 leading-tight ${i === currentPage ? 'text-blue-600 border border-gray-300 rounded-lg bg-[#E9EFFF]' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800'}  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+              aria-current={i === currentPage ? 'page' : undefined}
+            >
+              {i}
+            </a>
         </li>
-      );
-    } else {
-      xhtmlPages.push(
-        <li key={i}>
-          <a
-            href={`${temp}`}
-            aria-current="page"
-            className="flex items-center justify-center p-5 m-3 h-8  text-blue-600 border border-gray-300 rounded-lg bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-          >
-            {i}
-          </a>
-        </li>
-      );
-    }
+    );
   }
 
   xhtmlStart.push(
     <li>
       <a
-        href={`${distLocation}/1`}
+        href={`${location}/1`}
         className="flex items-center max-sm:hidden justify-center p-5 m-3 h-8  leading-tight text-gray-500 bg-white border border-e-0 rounded-lg border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       >
         Start
@@ -282,8 +251,8 @@ export const Test = (item) => {
   xhtmlPrevious.push(
     <li>
       <a
-        href={`${distLocation}/1`}
-        className="flex items-center justify-center p-5 m-3 h-8  leading-tight text-gray-500 bg-white rounded-lg border border-e-0 border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        href={currentPage > 1 ? `${location}/${currentPage - 1}` : undefined}
+        className={`flex items-center justify-center p-5 m-3 h-8 leading-tight text-gray-500 bg-white rounded-lg border border-e-0 border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ${currentPage === 1 ? 'cursor-not-allowed opacity-50' : ''}`}
       >
         &#60;
       </a>
@@ -293,8 +262,8 @@ export const Test = (item) => {
   xhtmlNext.push(
     <li>
       <a
-        href={`${distLocation}/${totalPages}`}
-        className="flex items-center justify-center p-5 m-3 h-8 leading-tight text-white bg-black border rounded-lg border-gray-300hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        href={currentPage < totalPages ? `${location}/${currentPage + 1}` : undefined}
+        className={`flex items-center justify-center p-5 m-3 h-8 leading-tight text-gray-500 bg-white rounded-lg border border-e-0 border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ${currentPage === totalPages ? 'cursor-not-allowed opacity-50' : ''}`}
       >
         &#62;
       </a>
@@ -303,7 +272,7 @@ export const Test = (item) => {
   xhtmlEnd.push(
     <li>
       <a
-        href={`${distLocation}/${totalPages}`}
+        href={`${location}/${totalPages}`}
         className="flex max-sm:hidden items-center max-sm:hiden justify-center p-5 m-3 h-8 leading-tight text-white bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
       >
         End
@@ -312,14 +281,7 @@ export const Test = (item) => {
   );
 
   if (max < totalPages) {
-    xhtmlPages.push(
-      <li
-        key="end-ellipsis"
-        className="flex items-center justify-center p-5 m-3 h-8 leading-tight text-white bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-      >
-        ...
-      </li>
-    );
+    xhtmlPages.push(<li key="end-ellipsis" className='flex items-center justify-center p-5 m-3 h-8 leading-tight text-white bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'>...</li>);
   }
 
   if (test && test.length > 0)

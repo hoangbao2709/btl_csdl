@@ -36,8 +36,8 @@ export default function Post() {
     let fetchedData = null;
     const [Link, setLink] = useState("/admin/post/All");
     const [open, setOpen] = useState([false, false, false]);
-    const [checkedItems, setCheckedItems] = useState(Array(data.length).fill(false));
-    const [allChecked, setAllChecked] = useState(false);
+    const [checkedItems, setCheckedItems] = useState([]);
+    const [allChecked, setAllChecked] = useState([]);
     const [Category, setCategory] = useState(false);
     const [currentCategory, setCurrentCategory] = useState("Tất cả sản phẩm");
     const [index, setIndex] = useState(0);
@@ -187,22 +187,47 @@ export default function Post() {
         });
     }
 
-    const handleCheckboxChange = (index, results) => {
+    const handleCheckboxChange = (index, results, id) => {
         setCheckedItems(prevCheckedItems => {
-            const newCheckedItems = [...prevCheckedItems];
-            newCheckedItems[index] = !newCheckedItems[index];
-            return newCheckedItems;
+            if (Use === "Edit") {
+                setLink("/admin/post/edit/" + id);
+                return [id]; 
+            } else {
+                const existingIndex = prevCheckedItems.indexOf(id);
+                const newCheckedItems = existingIndex === -1 
+                    ? [...prevCheckedItems, id] 
+                    : prevCheckedItems.filter(item => item !== id);
+                return newCheckedItems; 
+            }
         });
-        if(Use === "Edit"){
-            setCheckedItems(Array(results.length).fill(false));
-            setLink("/admin/post/edit/" + results[index].id);
-        }
     };
 
-    const handleCheckAll = () => {
-        const newCheckedItems = Array(data.length).fill(!allChecked);
-        setCheckedItems(newCheckedItems);
-        setAllChecked(!allChecked);
+    const handleCheckAll = (index, currentPage, Data) => {
+        if (!edit) {
+            const newCheckedState = [...allChecked];
+            if (newCheckedState[currentPage]) {
+                newCheckedState[currentPage] = false;
+                const newCheckedItems = [];
+                for (let i = 0; i < 10 && i + index < Data.length; i++) {
+                    const itemId = Data[i + index].id;
+                    newCheckedItems.push(itemId);
+                }
+                setCheckedItems(prevCheckedItems => {
+                    return prevCheckedItems.filter(item => !newCheckedItems.includes(item));
+                });
+            } else {
+                newCheckedState[currentPage] = true; 
+                const newCheckedItems = [];
+                for (let i = 0; i < 10 && i + index < Data.length; i++) {
+                    const itemId = Data[i + index].id;
+                    newCheckedItems.push(itemId);
+                }
+                setCheckedItems(prevCheckedItems => {
+                    return Array.from(new Set([...prevCheckedItems, ...newCheckedItems]));
+                });
+            }
+            setAllChecked(newCheckedState); 
+        }
     };
 
     function formatPrice(price) {
@@ -214,8 +239,6 @@ export default function Post() {
             const updatedData = data.map((element) => {
                 if (element.id === id) {
                     const newStatus = element.Status === "Active" ? "Inactive" : "Active";
-                    console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/setStatus.php?&url=${encodeURIComponent(element.Page)}&variable=${encodeURIComponent(newStatus)}&id=${encodeURIComponent(id)}`);
-
                     fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/setStatus.php?&url=${encodeURIComponent(element.Page)}&variable=${encodeURIComponent(newStatus)}&id=${encodeURIComponent(id)}`)
                         .then((response) => response.json())
                         .then((data) => {
@@ -240,7 +263,6 @@ export default function Post() {
     };
 
     function getHTML() {
-        console.log(data.length);
         if (Array.isArray(data) && data.length > 0) {
             return (
                 <PaginationHelper
@@ -251,15 +273,19 @@ export default function Post() {
                     handleStatusChange={handleStatusChange}
                     toggleModal={toggleModal}
                     open={open}
+                    setAllChecked={setAllChecked}
+                    allChecked={allChecked}
                     edit={edit}
                     setID={setID}
                     results={data}
+                    handleCheckAll={handleCheckAll}
                 />
             );
         } else {
             return <p>No data available</p>;
         }
     }
+
     const result = getHTML();
 
     const handleSubmit = (e) => {
@@ -270,7 +296,7 @@ export default function Post() {
     function navigateTo(url) {
         window.location.href = url;
     }
-
+    console.log(checkedItems);
     function HandleApply() {
         if (Use === "All") {
             navigateTo(Link);
@@ -281,17 +307,12 @@ export default function Post() {
         } else if (Use === "Edit") {
             navigateTo(Link);
         } else if (Use === "Delete") {
-            
             for (let index = 0; index < checkedItems.length; index++) {
-                
-                if (checkedItems[index] === true) {
-                    console.log(data[index].id);
-                    try {
-                        const response = fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/delete.php?&id=${encodeURIComponent(data[index].id)}`);
-                        
-                    } catch (error) {
-                        console.error("Error deleting item:", error);
-                    }
+                try {
+                    const response = fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/delete.php?&id=${encodeURIComponent(checkedItems[index])}`);
+                    
+                } catch (error) {
+                    console.error("Error deleting item:", error);
                 }
             }
             window.location.reload();
@@ -394,17 +415,7 @@ export default function Post() {
                             {input}
                         </div>
                     </div>
-                    <ul className="flex py-[20px] text-[20px] shadow-2xl rounded-t-lg ">
-                        <li className="w-[4%] flex items-center justify-center"><input type="checkbox" disabled={edit} className="size-4 cursor-pointer" onClick={() => handleCheckAll()} /></li>
-                        <li className="w-[5%] flex items-center justify-center">ID</li>
-                        <li className="w-[30%] flex items-center justify-center">Name</li>
-                        <li className="w-[13%] flex items-center justify-center">Giá gốc</li>
-                        <li className="w-[10%] flex items-center justify-center">Giá</li>
-                        <li className="w-[10%] flex items-center justify-center">Giảm giá</li>
-                        <li className="w-[10%] flex items-center justify-center">Hàng tồn kho</li>
-                        <li className="w-[10%] flex items-center justify-center">Status</li>
-                        <li className="w-[10%] flex items-center justify-center" >Thêm</li>
-                    </ul>
+
                     {results.length > 0 ? SecrchResult : getHTML()}
                 </div>
             </div>
