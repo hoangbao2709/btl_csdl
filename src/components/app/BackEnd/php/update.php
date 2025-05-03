@@ -132,7 +132,7 @@ if (isset($_FILES['file'])) {
         }
 
         $target_path = $upload_dirs['trang_chu'] . $filename;
-        $target_path = explode(separator: '?', $target_path)[0];
+        $target_path = explode( '?', $target_path)[0];
 
         error_log(message: print_r( $target_path, true));
 

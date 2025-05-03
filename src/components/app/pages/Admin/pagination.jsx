@@ -141,10 +141,6 @@ const PaginationHelper = ({
   let index = (currentPage - 1) * totalItemsPerPage;
   let max_index = totalItemsPerPage;
 
-  if (edit) {
-    checkedItems = [];
-  }
-
   let type;
 
   edit ? (type = "radio") : (type = "checkbox");
