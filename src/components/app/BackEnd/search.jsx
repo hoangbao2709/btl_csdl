@@ -89,7 +89,7 @@ class Trie {
 
 const trie = new Trie();
 
-export default function Search(fetchedData, checkedItems, handleCheckboxChange, formatPrice, handleStatusChange, toggleModal, open, edit, setID) {
+export default function Search(fetchedData, checkedItems, handleCheckboxChange, formatPrice, handleStatusChange, toggleModal, open, edit, setID, setAllChecked, allChecked, handleCheckAll) {
     const [results, setResults] = useState([]);
     const [currentCategory, setCurrentCategory] = useState('Tìm theo tên');
     const [index, setIndex] = useState(0);
@@ -97,7 +97,7 @@ export default function Search(fetchedData, checkedItems, handleCheckboxChange, 
     const resultsRef1 = useRef();
     const data = fetchedData;
     const [Open, setOpen] = useState(false);
-
+    // console.log("data", data);
     useEffect(() => {
         if (Array.isArray(data) && data.length > 0 && currentCategory === "Tìm theo tên") {
             trie.clear();
@@ -138,14 +138,18 @@ export default function Search(fetchedData, checkedItems, handleCheckboxChange, 
                     handleStatusChange={handleStatusChange}
                     toggleModal={toggleModal}
                     open={open}
+                    setAllChecked={setAllChecked}
+                    allChecked={allChecked}
                     edit={edit}
                     setID={setID}
                     results={results}
+                    handleCheckAll={handleCheckAll}
                 />
             );
         }
     }
 
+    console.log("results",results);
     const SecrchResult = getHTML();
 
     const input = [];

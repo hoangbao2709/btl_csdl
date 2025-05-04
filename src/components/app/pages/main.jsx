@@ -71,7 +71,7 @@ const Main = () => {
       }}
     >
       <Header childWidth={childWidth}/>
-      <a className="flex pt-[140px]">
+      <a href="/admin" className="flex pt-[140px]">
         <Images />
       </a>
       <div className={`main flex w-[100%] justify-center mt-[50px] `}>

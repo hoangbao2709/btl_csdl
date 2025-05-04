@@ -350,7 +350,7 @@ export default function Post() {
         );
     });
 
-    const [input, SecrchResult, results] = Search(fetchedData, checkedItems, handleCheckboxChange, formatPrice, handleStatusChange, toggleModal, open, edit, setID);
+    const [input, SecrchResult, results] = Search(fetchedData, checkedItems, handleCheckboxChange, formatPrice, handleStatusChange, toggleModal, open, edit, setID, setAllChecked, allChecked, handleCheckAll);
 
     return (
         <form className="flex w-full h-screen justify-center items-center" action="http://localhost:8000/input.php" method="post" onSubmit={handleSubmit}>   

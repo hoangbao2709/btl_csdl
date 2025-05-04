@@ -172,7 +172,7 @@ const PaginationHelper = ({
           <li className="w-[5%] flex items-center justify-center">
             {element.id || ""}
           </li>
-          <li className="w-[30%] flex items-center justify-center overflow-hidden">
+          <li className="w-[40%] flex items-center overflow-hidden">
             {element.name || ""}
           </li>
           <li className={`w-[13%] flex items-center justify-center`}>
