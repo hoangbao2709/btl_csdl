@@ -7,6 +7,7 @@ import "./App.css";
 import SignupForm from "./components/app/pages/header/sign_up";
 import SigninForm from "./components/app/pages/header/sign_in";
 import { GlobalProvider } from './GlobalContext'; 
+import SelectMethodPage from "./components/app/pages/payment/page";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/Products/:name?" element={<Product />} />
           <Route path="/sign_up" element={<SignupForm />} />
           <Route path="/sign_in" element={<SigninForm />} />
+          <Route path="/Payment/:value?" element={<SelectMethodPage/>} />
+
         </Routes>
       </BrowserRouter>
     </GlobalProvider>

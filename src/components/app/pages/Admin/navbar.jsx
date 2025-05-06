@@ -122,7 +122,7 @@ export default function Navbar() {
                                 </div>
                             </li>
                             <li>
-                                <a href={`${!open ? "/admin/schedules": ""}`} className={`flex py-4 my-2 w-full pl-4 rounded-lg ${!open ? "cursor-pointer transition delay-150 duration-300 ease-in-out hover:scale-[1.4]": ""}`}>
+                                <a href={`${!open ? "/admin/order": ""}`} className={`flex py-4 my-2 w-full pl-4 rounded-lg ${!open ? "cursor-pointer transition delay-150 duration-300 ease-in-out hover:scale-[1.4]": ""}`}>
                                     <img className="pr-4 w-[50px]" src={schedule}></img>
                                 </a>
                             </li>
@@ -200,8 +200,8 @@ export default function Navbar() {
                                 </a>
                             </li>
                             <li>
-                                <a href={"/admin/schedules"} className={`my-1 flex py-4 w-full pl-4 rounded-lg hover:bg-[#2D2F39] cursor-pointer ${isActive === "schedules" ? 'bg-[#2D2F39] text-[#62fcaf]' : ''} `}>
-                                    <p className="text-[20px]">Schedules</p>
+                                <a href={"/admin/order"} className={`my-1 flex py-4 w-full pl-4 rounded-lg hover:bg-[#2D2F39] cursor-pointer ${isActive === "order" ? 'bg-[#2D2F39] text-[#62fcaf]' : ''} `}>
+                                    <p className="text-[20px]">Order</p>
                                 </a>
                             </li>
                             <li>

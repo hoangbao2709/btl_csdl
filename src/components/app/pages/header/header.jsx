@@ -274,7 +274,7 @@ export default function Header(item) {
             </p>
             <div className="flex w-full">
                 <a className="text-[17px] w-[50%] m-[5px] py-[5px] mb-[5px] flex justify-center items-center bg-[white] text-[red] border border-[red] rounded-sm" href="/main/Favorite"> Xem giỏ hàng</a>
-                <a className="text-[17px] w-[50%] m-[5px] py-[5px] mb-[5px] flex justify-center items-center font-bold bg-[red] text-white rounded-sm" href="/main/Favorite"> Thanh toán</a>
+                <a className="text-[17px] w-[50%] m-[5px] py-[5px] mb-[5px] flex justify-center items-center font-bold bg-[red] text-white rounded-sm" href="/Payment"> Thanh toán</a>
             </div>
         </div>
         );

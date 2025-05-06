@@ -61,7 +61,6 @@ export default function Input() {
   const [id, setID] = useState();
   const [files, setFiles] = useState([]);
 
-
   useEffect(() => {
     fetch(
       `https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/Data.php?&url=${encodeURIComponent(
