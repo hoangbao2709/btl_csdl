@@ -804,6 +804,32 @@ CREATE TABLE `tivi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `tivi` (`id`, `name`, `gia_goc`, `gia`, `giam_gia`, `inventory`, `description`, `trong_luong`, `Page`, `Status`, `company`, `last_updated`) VALUES
+(447, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:00'),
+(448, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:01'),
+(449, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:02'),
+(450, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:02'),
+(451, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:02'),
+(452, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:03'),
+(453, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:03'),
+(454, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:04'),
+(455, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:04'),
+(456, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:05'),
+(457, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:05'),
+(458, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:05'),
+(459, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:06'),
+(460, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:06'),
+(461, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:06'),
+(462, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:07'),
+(463, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:07'),
+(464, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:08'),
+(465, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:08'),
+(466, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:08'),
+(467, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:09'),
+(468, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:17'),
+(469, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:18'),
+(470, 'Smart Tivi Coocaa FHD 43 inch 43S3U+', '4490000', '3592000', '20', 1000, 'Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.', '300', 'tivi', 'Active', 'Coocaa', '2025-04-30 15:27:18');
+
 CREATE TABLE `tivi_history` (
   `history_id` int(11) NOT NULL,
   `phu_kien_id` int(11) NOT NULL,

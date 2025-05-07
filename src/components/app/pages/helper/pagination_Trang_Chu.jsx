@@ -76,42 +76,6 @@ export const Test = (item) => {
         </Swiper>
       </div>
       <div>
-        <p className="text-[30px] font-bold">LAPTOP</p>
-        <Swiper
-            slidesPerView={5}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="w-[1200px]"
-        >
-            {Laptop.map((element, index) => {
-              const imgs = getImg(element.img);
-              const imgSrc = imgs.length > 0 ? imgs[0] : '';
-              return (
-              <SwiperSlide key={index}>
-                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
-                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
-                    <img
-                      src={imgSrc}
-                      alt="Framed"
-                    />
-                    <p className="font-bold">{element.name}</p>
-                    <div className="relative h-full">
-                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
-                      <label
-                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
-                        id="original-price"
-                      >
-                        <strong>{element.gia_goc}</strong>
-                      </label>
-                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
-                    </div>
-                  </div>
-                </a>
-              </SwiperSlide>
-              )
-            })}
-        </Swiper>
-      </div>
-      <div>
         <p className="text-[30px] font-bold">MÀN HÌNH, MÁY TÍNH ĐỂ BÀN</p>
         <Swiper
             slidesPerView={5}
@@ -299,6 +263,42 @@ export const Test = (item) => {
             className="w-[1200px]"
         >
             {Phu_kien.map((element, index) => {
+              const imgs = getImg(element.img);
+              const imgSrc = imgs.length > 0 ? imgs[0] : '';
+              return (
+              <SwiperSlide key={index}>
+                <a className="cursor-pointer" href={`/Product/${element.page}/${element.id}`}>
+                  <div className="h-[350px] bg-white rounded-lg mx-2 my-3 relative px-[10px]">
+                    <img
+                      src={imgSrc}
+                      alt="Framed"
+                    />
+                    <p className="font-bold">{element.name}</p>
+                    <div className="relative h-full">
+                      <strong className="text-[red] text-[16px]">{element.gia}</strong>
+                      <label
+                        className="text-gray-400 text-[16px] md:absolute md:right-[10px] line-through"
+                        id="original-price"
+                      >
+                        <strong>{element.gia_goc}</strong>
+                      </label>
+                      <p className="h-[50px] bg-[#F3F4F6] text-[15px] p-[5px] rounded-2xl overflow-hidden">{element.description}</p>
+                    </div>
+                  </div>
+                </a>
+              </SwiperSlide>
+              )
+            })}
+        </Swiper>
+      </div>
+      <div>
+        <p className="text-[30px] font-bold">LAPTOP</p>
+        <Swiper
+            slidesPerView={5}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="w-[1200px]"
+        >
+            {Laptop.map((element, index) => {
               const imgs = getImg(element.img);
               const imgSrc = imgs.length > 0 ? imgs[0] : '';
               return (
