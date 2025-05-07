@@ -149,7 +149,6 @@ export default function Search(fetchedData, checkedItems, handleCheckboxChange, 
         }
     }
 
-    console.log("results",results);
     const SecrchResult = getHTML();
 
     const input = [];

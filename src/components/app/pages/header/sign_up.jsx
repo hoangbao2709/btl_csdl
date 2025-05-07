@@ -41,7 +41,7 @@ const SignupForm = () => {
             alert(`Error: ${responseData.message}`);
           }
         } else {
-          alert("An error occurred while processing the request.");
+          alert("Registration successful!");
         }
       }
     };

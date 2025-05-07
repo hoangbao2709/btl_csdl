@@ -13,13 +13,13 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
 
 if ($url) {
     if ($variable !== "All") {
-        $sql = "SELECT * FROM $url WHERE Status = :status";
+        $sql = "SELECT * FROM $url WHERE Status = :status ORDER BY id ASC;";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':status', $variable, PDO::PARAM_STR); 
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
-        $sql = "SELECT * FROM $url";
+        $sql = "SELECT * FROM $url ORDER BY id ASC;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

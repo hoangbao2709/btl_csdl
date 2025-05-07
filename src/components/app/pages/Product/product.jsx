@@ -184,6 +184,7 @@ export default function Product() {
     }
 
     function addToStore(){
+        console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/store.php?&id=${encodeURIComponent(element.id)}&sl=${soLuong}&phone=${encodeURIComponent(ID)}`);
         fetch(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/store.php?&id=${encodeURIComponent(element.id)}&sl=${soLuong}&phone=${encodeURIComponent(ID)}`);
     }
 

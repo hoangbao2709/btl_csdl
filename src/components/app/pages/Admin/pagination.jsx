@@ -154,7 +154,7 @@ const PaginationHelper = ({
     ];
 
     return paddedItems.map((element, idx) =>
-      element.id ? (
+      element.id >= 0 ? (
         <ul
           className={`flex text-[20px] h-[50px] w-full ${
             idx % 2 === 0 ? "bg-[#E0E3E7]" : ""
@@ -170,7 +170,7 @@ const PaginationHelper = ({
             />
           </li>
           <li className="w-[5%] flex items-center justify-center">
-            {element.id || ""}
+            {element.id }
           </li>
           <li className="w-[40%] flex items-center overflow-hidden">
             {element.name || ""}

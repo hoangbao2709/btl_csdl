@@ -246,6 +246,7 @@ export default function Post() {
                         .catch((error) => {
                             console.error("Error fetching data:", error);
                         });
+                    console.log(`https://localhost/btl_csdl/src/components/app/BackEnd/php/uploads/setStatus.php?&url=${encodeURIComponent(element.Page)}&variable=${encodeURIComponent(newStatus)}&id=${encodeURIComponent(id)}`)
                     return { ...element, Status: newStatus };
                 }
                 return element;
@@ -397,12 +398,12 @@ export default function Post() {
                         `} onClick={handleAction}>
                             <p>{Use}</p>
                         </div>
-                        <i onClick={HandleCategory} className="absolute  w-[260px] text-[#009981] flex items-center right-[0] px-[15px] py-[10px] rounded-lg hover:bg-[#EEFFF7] hover:text-[black]">
+                        <i onClick={HandleCategory} className="absolute  w-[300px] text-[#009981] flex items-center right-[0] px-[15px] py-[10px] rounded-lg hover:bg-[#EEFFF7] hover:text-[black]">
                             <FontAwesomeIcon className="text-[19px] font-bold" icon={faList} />
                             <label className="text-[18px] font-bold px-4">{currentCategory}</label>
                         </i>
                         {Category &&
-                            <ul className="absolute z-50 shadow-lg right-[0px] border bg-white top-[60px] bold w-[250px] rounded-lg text-[20px] items-center">
+                            <ul className="absolute z-50 shadow-lg right-[0px] border bg-white top-[60px] bold w-[300px] rounded-lg text-[20px] items-center">
                                 {listCategory}
                             </ul>
                         }
